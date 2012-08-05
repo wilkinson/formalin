@@ -1,0 +1,67 @@
+/*- CSS style sheet */
+
+/*- style.css ~~
+ *                                                      ~~ (c) SRW, 03 Aug 2012
+ *                                                  ~~ last updated 05 Aug 2012
+ */
+
+body {
+    background-color: #CCCCCC;
+    color: black;
+    font-family: Georgia,Serif;
+    font-size: 12pt;
+    margin-top: 0.5in;
+    margin-left: 1in;
+    margin-right: 1in;
+    margin-bottom: 0.5in;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type=checkbox] {
+ /*
+    Hide the actual checkbox from the user. Although this would seem to make
+    it useless for taking input, it works well because we can then associate a
+    label with it and use the label as the target for clicks. Setting the
+    "display" attribute to "block" puts each choice on its own line.
+ */
+    visibility: hidden;
+}
+
+input[type=checkbox] + label {
+ /*
+    Any label associated with a checkbox should be gray text in a gray box with
+    the default background color. Also, we double-space the text to keep the
+    boxes from overlapping.
+ */
+    color: gray;
+    line-height: 2;
+    outline: 1px solid gray;
+    padding: 5px;
+}
+
+input[type=checkbox]:checked + label {
+ /*
+    When the checkbox is "checked", the label's text should become black and
+    the background should become white. At the moment, the exact color of the
+    box isn't important enough for me to go read the standard :-P
+ */
+    color: black;
+    background-color: white;
+}
+
+#peripheral-smear {
+    text-align: left;
+}
+
+#report {
+    font-family: Georgia,Serif;
+    font-size: 12pt;
+    resize: both;
+    width: 100%;
+}
+
+/*- vim:set syntax=css: */
