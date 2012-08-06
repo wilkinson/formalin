@@ -10,11 +10,12 @@ body {
     color: black;
     font-family: Georgia,Serif;
     font-size: 12pt;
-    margin-bottom: 0.5in;
-    margin-left: 1in;
-    margin-right: 1in;
-    margin-top: 0.5in;
+    margin: 0.5in 1in 0.5in 1in;
     text-align: center;
+}
+
+form p {
+    text-align: left;
 }
 
 h1 {
@@ -66,11 +67,12 @@ input[type=checkbox]:checked + label {
     background-color: white;
 }
 
-#peripheral-smear {
-    text-align: left;
-}
-
-#report {
+textarea {
+ /*
+    The definitions here only affect #report right now, but the CSS Lint tool
+    recommends not to use id selectors if they can be avoided. See the site at
+    http://csslint.net for more information.
+ */
     font-family: Georgia,Serif;
     font-size: 12pt;
     resize: both;
