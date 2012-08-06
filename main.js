@@ -19,8 +19,7 @@
 
  // Declarations
 
-    var $, conjoin, create_checkbox, generate_report, peripheral_smear,
-        select_all_that_apply;
+    var $, conjoin, create_checkbox, generate_report, peripheral_smear;
 
  // Definitions
 
@@ -98,10 +97,11 @@
         if (options.init === true) {
             for (key in x) {
                 if (x.hasOwnProperty(key)) {
-                    $('#peripheral-smear').append($(create_checkbox({
+                    $('#peripheral-smear').append(create_checkbox({
                         id: key,
                         label: x[key]
-                    })).click(generate_report));
+                    }));
+                    $(key).click(generate_report);
                 }
             }
          // Finally, add a period at the end of our template's "sentence".
@@ -114,38 +114,6 @@
             }
         }
         return 'Red blood cells show' + conjoin(y);
-    };
-
-    select_all_that_apply = function (obj) {
-     // This function takes an object as its input argument, creates the HTML
-     // elements necessary to take the appropriate user input, and returns a
-     // function that generates text dynamically from the values of the HTML
-     // elements each time it is invoked.
-     //
-     // NOTE: This function is not currently being used.
-     //
-        var key;
-        for (key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                $('#peripheral-smear').append($(create_checkbox({
-                    id: key,
-                    label: obj[key]
-                })).click(generate_report));
-            }
-        }
-     // Finally, add a period at the end of our template's "sentence".
-        $('#peripheral-smear').append(' .');
-        return function () {
-         // This function needs documentation.
-            var key, y;
-            y = [];
-            for (key in obj) {
-                if ((obj.hasOwnProperty(key)) && ($(key).is(':checked'))) {
-                    y.push(obj[key]);
-                }
-            }
-            return 'Red blood cells show' + conjoin(y);
-        };
     };
 
  // Out-of-scope definitions (via "invocations" :-P)
