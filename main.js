@@ -66,9 +66,9 @@
         if ((options instanceof Object) === false) {
             options = {};
         }
-        $('#report').html([
+        $('#report').val([
             peripheral_smear(options)
-        ].join(' '));
+        ].join(''));
         return;
     };
 
@@ -119,7 +119,8 @@
     select_all_that_apply = function (obj) {
      // This function takes an object as its input argument, creates the HTML
      // elements necessary to take the appropriate user input, and returns a
-     // function that generates text dynamically from the values of the HTML\        // elements each time it is invoked.
+     // function that generates text dynamically from the values of the HTML
+     // elements each time it is invoked.
      //
      // NOTE: This function is not currently being used.
      //
@@ -136,10 +137,11 @@
         $('#peripheral-smear').append(' .');
         return function () {
          // This function needs documentation.
-            var y = [];
+            var key, y;
+            y = [];
             for (key in obj) {
                 if ((obj.hasOwnProperty(key)) && ($(key).is(':checked'))) {
-                    y.push(x[key]);
+                    y.push(obj[key]);
                 }
             }
             return 'Red blood cells show' + conjoin(y);
