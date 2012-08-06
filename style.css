@@ -10,10 +10,10 @@ body {
     color: black;
     font-family: Georgia,Serif;
     font-size: 12pt;
-    margin-top: 0.5in;
+    margin-bottom: 0.5in;
     margin-left: 1in;
     margin-right: 1in;
-    margin-bottom: 0.5in;
+    margin-top: 0.5in;
     text-align: center;
 }
 
@@ -41,6 +41,19 @@ input[type=checkbox] + label {
     line-height: 2;
     outline: 1px solid gray;
     padding: 5px;
+
+ /*
+    Sometimes a user's clicks are interpreted by the browser as an attempt to
+    select the label's text, but this is almost never the user's intent. See
+    the post at http://stackoverflow.com/a/4407335 for more information.
+ */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
 }
 
 input[type=checkbox]:checked + label {
