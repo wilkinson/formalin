@@ -120,7 +120,6 @@
 
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
-        //$(document).mousemove(generate_report);
         generate_report({init: true});
         return;
     });
