@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 05 Aug 2012
+//                                                  ~~ last updated 06 Aug 2012
 
 (function () {
     'use strict';
@@ -73,33 +73,95 @@
 
     peripheral_smear = function (options) {
      // This function generates the report's "Peripheral Smear" section.
+     //
+     // Example output:
+     //
+     //     Red blood cells [are _ and] show [modifier *cytosis].
+     //     [[modifier *cytes]+ are present].
+     //
+     //     (stippling should be an entirely separate sentence.)
+     //
         if ((options instanceof Object) === false) {
             options = {};
         }
-        var key, x, y;
+        var key, grades, x, y;
+        grades = ['rare', 'few', 'scattered', 'occasional', 'several'];
         x = {
-         // '#elementid':       'human readable text'
-         // ------              ---------------------
-            '#ps-apk':          'APK',
-            '#ps-aniso':        'aniso',
-            '#ps-poikilo':      'poikilo',
-            '#ps-normocytic':   'normocytic',
-            '#ps-normochromic': 'normochromic',
-            '#ps-dacro':        'dacro',
-            '#ps-ellipto':      'ellipto',
-            '#ps-schisto':      'schisto',
-            '#ps-target':       'target',
-            '#ps-polychrom':    'polychrom',
-            '#ps-stomato':      'stomato',
-            '#ps-sphero':       'sphero',
-            '#ps-echino':       'echino'
+         // Naming convention here is "#ps-short_name", where "#" allows it to
+         // be a CSS selector and "ps" acts as a namespace of sorts for the
+         // peripheral smear section.
+            '#ps-apk': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'anisopoikilocytosis',
+                short_name:     'APK'
+            },
+            '#ps-aniso': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'anisocytosis',
+                short_name:     'aniso'
+            },
+            '#ps-poikilo': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'poikilocytosis',
+                short_name:     'poikilo'
+            },
+            '#ps-normocytic': {
+                grades: [''],
+                long_name:      'normocytic',
+                short_name:     'normocytic'
+            },
+            '#ps-normochromic': {
+                grades: [''],
+                long_name:      'normochromic',         //- ???
+                short_name:     'normochromic'
+            },
+            '#ps-dacro': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'dacrocytes',           //- ???
+                short_name:     'dacro'
+            },
+            '#ps-ellipto': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'elliptocytes',         //- ???
+                short_name:     'ellipto'
+            },
+            '#ps-schisto': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'schistocytes',
+                short_name:     'schisto'
+            },
+            '#ps-target': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'target cells',
+                short_name:     'target'
+            },
+            '#ps-polychrom': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'polychromatic cells',
+                short_name:     'polychrom'
+            },
+            '#ps-stomato': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'stomatocytes',
+                short_name:     'stomato'
+            },
+            '#ps-sphero': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'spherocytes',
+                short_name:     'sphero'
+            },
+            '#ps-echino': {
+                grades: ['rare', 'few', 'scattered', 'occasional', 'several'],
+                long_name:      'echinocytes',
+                short_name:     'echino'
+            }
         };
         if (options.init === true) {
             for (key in x) {
                 if (x.hasOwnProperty(key)) {
                     $('#peripheral-smear').append(create_checkbox({
                         id: key,
-                        label: x[key]
+                        label: x[key].short_name
                     }));
                     $(key).click(generate_report);
                 }
@@ -110,7 +172,7 @@
         y = [];
         for (key in x) {
             if ((x.hasOwnProperty(key)) && ($(key).is(':checked'))) {
-                y.push(x[key]);
+                y.push(x[key].long_name);
             }
         }
         return 'Red blood cells show' + conjoin(y);
