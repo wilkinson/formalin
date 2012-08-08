@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 03 Aug 2012
- *                                                  ~~ last updated 05 Aug 2012
+ *                                                  ~~ last updated 07 Aug 2012
  */
 
 body {
@@ -22,21 +22,21 @@ h1 {
     text-align: center;
 }
 
-input[type=checkbox] {
+input {
  /*
-    Hide the actual checkbox from the user. Although this would seem to make
-    it useless for taking input, it works well because we can then associate a
-    label with it and use the label as the target for clicks. Setting the
-    "display" attribute to "block" puts each choice on its own line.
+    Hide the actual input element from the user. Although this would seem to
+    make it useless for taking input, it works well because we can then
+    associate a label with it and use the label as the target for clicks.
+    Setting "display" to "block" puts each choice on its own line.
  */
     visibility: hidden;
 }
 
-input[type=checkbox] + label {
+input + label {
  /*
-    Any label associated with a checkbox should be gray text in a gray box with
-    the default background color. Also, we double-space the text to keep the
-    boxes from overlapping.
+    Any label associated with an input element should be gray text in a gray
+    box with the default background color. Also, we double-space the text to
+    keep the boxes from overlapping.
  */
     color: gray;
     line-height: 2;
@@ -57,11 +57,12 @@ input[type=checkbox] + label {
 
 }
 
-input[type=checkbox]:checked + label {
+input:checked + label {
  /*
-    When the checkbox is "checked", the label's text should become black and
-    the background should become white. At the moment, the exact color of the
-    box isn't important enough for me to go read the standard :-P
+    When the input is "checked", such as for a checkbox or a radio button, the
+    label's text should become black and the background should become white. At
+    the moment, the exact color of the box isn't important enough for me to go
+    read the standard :-P
  */
     color: black;
     background-color: white;

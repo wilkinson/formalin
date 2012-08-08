@@ -19,8 +19,9 @@
 
  // Declarations
 
-    var $, binary, conjoin, Cycle, cycle, generate_report, ordinal,
-        peripheral_smear, trim;
+    var $, binary, capitalize, categorical, conjoin, Cycle, cycle,
+        generate_report, isFunction, ordinal, peripheral_smear, ply, sentence,
+        trim, uuid;
 
  // Definitions
 
@@ -31,39 +32,77 @@
         if ((obj instanceof Object) === false) {
             throw new TypeError('Argument must be an object.');
         }
-        if (obj.hasOwnProperty('short_name') === false) {
-            throw new Error('Argument must have a `short_name` property.');
-        }
         obj.states = [undefined, ''];
-        var key = obj.short_name.split(/\s/).join('-').toLowerCase();
+        var key = uuid();
         return $('<input/>', {
             id: key,
             click: function () {
              // This function needs documentation.
-                if ($(this).data('cycle-instance').next().current > 1) {
-                    this.checked = true;
-                }
+                var x = $(this).data('cycle-instance');
+                x.next();
+                this.checked = (x.current > 0);
                 generate_report();
                 return;
             },
-            type: 'checkbox'
+            type: 'radio'
         }).
             data('cycle-instance', cycle(obj)).
             after('<label for="' + key + '">' + obj.short_name + '</label>');
     };
 
+    capitalize = function (x) {
+     // This function needs documentation.
+        if (typeof x !== 'string') {
+            throw new TypeError('Argument must be a string.');
+        }
+        return x.charAt(0).toUpperCase() + x.slice(1);
+    };
+
+    categorical = function (x) {
+     // This function needs documentation.
+        /*jslint unparam: true */
+        if ((x instanceof Array) === false) {
+            throw new TypeError('Argument must be an array.');
+        }
+        var callback, name, y;
+        callback = function (evt) {
+         // This function needs documentation.
+            var id, pred;
+            id = evt.target.id;
+            pred = '[type="radio"][name="' + name + '"][id!="' + id + '"]';
+            $('input' + pred).each(function () {
+             // This function needs documentation.
+                $(this).data('cycle-instance').current = 0;
+                return;
+            });
+            return;
+        };
+        name = uuid();
+        y = [];
+        ply(x).by(function (i, obj) {
+         // This function needs documentation.
+            Array.prototype.push.apply(y, binary(obj));
+            return;
+        });
+        ply(y).by(function (key, val) {
+         // This function needs documentation.
+            if (val.type === 'radio') {
+                $(val).attr('name', name).click(callback);
+            }
+            return;
+        });
+        return y;
+    };
+
     conjoin = function (x) {
      // This function joins the elements of an array using the "Oxford comma".
-        if (x.length === 0) {
-            return '.';
+        if ((x instanceof Array) === false) {
+            throw new TypeError('Argument must be an array.');
         }
-        if (x.length === 1) {
-            return ' ' + x[0] + '.';
+        if (x.length < 3) {
+            return x.join(' and ');
         }
-        if (x.length === 2) {
-            return ' ' + x.join(' and ') + '.';
-        }
-        return ' ' + x.slice(0, -1).join(', ') + ', and ' + x.slice(-1) + '.';
+        return x.slice(0, -1).join(', ') + ', and ' + x.slice(-1);
     };
 
     Cycle = function Cycle(obj) {
@@ -108,8 +147,14 @@
      // function as text and puts that text into the designated textarea.
         $('#report').val([
             peripheral_smear()
-        ].join(''));
+        ].join('')).focus();
         return;
+    };
+
+    isFunction = function (f) {
+     // This function returns `true` only if and only if `f` is a Function.
+     // The second condition is necessary to return `false` for a RegExp.
+        return ((typeof f === 'function') && (f instanceof Function));
     };
 
     ordinal = function (obj) {
@@ -117,10 +162,7 @@
         if ((obj instanceof Object) === false) {
             throw new TypeError('Argument must be an object.');
         }
-        if (obj.hasOwnProperty('short_name') === false) {
-            throw new Error('Argument must have a `short_name` property.');
-        }
-        var key = obj.short_name.split(/\s/).join('-').toLowerCase();
+        var key = uuid();
         return $('<input/>', {
             id: key,
             click: function () {
@@ -139,13 +181,84 @@
 
     peripheral_smear = function () {
      // This function generates the report's "Peripheral Smear" section.
-        var y = [];
-        $('#peripheral-smear input:checked').each(function () {
+        var temp, y;
+        temp = [];
+        y = [];
+        $('#peripheral-smear-1 input:checked').each(function () {
          // This function needs documentation.
-            y.push($(this).data('cycle-instance'));
+            temp.push($(this).data('cycle-instance'));
             return;
         });
-        return 'Red blood cells show' + conjoin(y);
+        if (temp.length > 0) {
+            y.push(sentence('red blood cells are', conjoin(temp)));
+            temp = [];
+        }
+        $('#peripheral-smear-2 input:checked').each(function () {
+         // This function needs documentation.
+            temp.push($(this).data('cycle-instance'));
+            return;
+        });
+        if (temp.length > 0) {
+            y.push(sentence('red blood cells show', conjoin(temp)));
+            temp = [];
+        }
+        $('#peripheral-smear-3 input:checked').each(function () {
+         // This function needs documentation.
+            temp.push($(this).data('cycle-instance'));
+            return;
+        });
+        if (temp.length > 0) {
+            y.push(sentence(conjoin(temp), 'are present'));
+            temp = [];
+        }
+        return y.join(' ');
+    };
+
+    ply = function () {
+     // This function needs documentation.
+        var args = Array.prototype.slice.call(arguments);
+        return {
+            by: function (f) {
+             // This function needs documentation.
+                if (isFunction(f) === false) {
+                    throw new TypeError('`ply..by` expects a function.');
+                }
+                var i, key, obj, n, toc, x;
+                n = args.length;
+                toc = {};
+                x = [];
+                for (i = 0; i < n; i += 1) {
+                    if ((args[i] !== null) && (args[i] !== undefined)) {
+                        obj = args[i].valueOf();
+                        for (key in obj) {
+                            if (obj.hasOwnProperty(key)) {
+                                if (toc.hasOwnProperty(key) === false) {
+                                    toc[key] = x.push([key]) - 1;
+                                }
+                                x[toc[key]][i + 1] = obj[key];
+                            }
+                        }
+                    }
+                }
+                n = x.length;
+                for (i = 0; i < n; i += 1) {
+                    f.apply(this, x[i]);
+                }
+                return;
+            }
+        };
+    };
+
+    sentence = function () {
+     // This function needs documentation.
+        var args, i, n, y;
+        args = Array.prototype.slice.call(arguments);
+        n = args.length;
+        y = [];
+        for (i = 0; i < n; i += 1) {
+            y[i] = trim(args[i]);
+        }
+        return capitalize(y.join(' ') + '.');
     };
 
     trim = function (x) {
@@ -154,6 +267,16 @@
             return x.trim();
         }
         return x.replace(/^\s*|\s*$/g, '');
+    };
+
+    uuid = function () {
+     // This function generates random hexadecimal UUIDs of length 32.
+        var x, y;
+        y = '';
+        while ((x = y.length) < 32) {
+            y += Math.random().toString(16).slice(2, 34 - x);
+        }
+        return y;
     };
 
  // Prototype definitions
@@ -192,8 +315,7 @@
 
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
-        var states;
-        states = {
+        var states = {
             'cytes': [
                 undefined, 'rare', 'few', 'scattered', 'occasional', 'several'
             ],
@@ -201,16 +323,38 @@
                 undefined, 'mild', 'moderate', 'severe'
             ]
         };
-        $.fn.append.apply($('#peripheral-smear'), [
-            //'Red blood cells are',
-            binary({
-                long_name:  'normocytic',
-                short_name: 'normocytic'
-            }),
-            binary({
-                long_name:  'normochromic',
-                short_name: 'normochromic'
-            }),
+        $.fn.append.apply($('#peripheral-smear-1'), [
+            categorical([
+                {
+                    long_name:  'microcytic',
+                    short_name: 'microcytic'
+                },
+                {
+                    long_name:  'normocytic',
+                    short_name: 'normocytic'
+                },
+                {
+                    long_name:  'macrocytic',
+                    short_name: 'macrocytic'
+                }
+            ]),
+            categorical([
+                {
+                    long_name:  'hypochromic',
+                    short_name: 'hypochromic'
+                },
+                {
+                    long_name:  'normochromic',
+                    short_name: 'normochromic'
+                },
+                {
+                    long_name:  'hyperchromic',
+                    short_name: 'hyperchromic'
+                }
+            ]),
+            ' .'
+        ]);
+        $.fn.append.apply($('#peripheral-smear-2'), [
             //' and show',
             ordinal({
                 long_name:  'anisopoikilocytosis',
@@ -226,6 +370,14 @@
                 long_name:  'poikilocytosis',
                 short_name: 'poikilo',
                 states:     states.cytoses
+            }),
+            ' .'
+        ]);
+        $.fn.append.apply($('#peripheral-smear-3'), [
+            ordinal({
+                long_name:  'acanthocytes',
+                short_name: 'acantho',
+                states:     states.cytes
             }),
             ordinal({
                 long_name:  'dacrocytes',
@@ -268,7 +420,7 @@
                 states:     states.cytes
             }),
          // Add a period at the end of template's "sentence" ;-)
-            ' .'
+            ' are present.'
         ]);
      // Finally, initialize the default value of the report.
         generate_report();
