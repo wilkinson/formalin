@@ -1,15 +1,25 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
+#-  Git configuration file
 
-pids
-logs
-results
+#-  .gitignore ~~
+#
+#   This file contains user-defined filename patterns that Git should ignore
+#   when it computes changes. Typically, we want to ignore any hidden or
+#   temporary files created by the operating system or text editor, but I must
+#   stress that we do not, under _any_ circumstances, want to add a rule that
+#   may cause us to exclude an important file accidentally. Thus, my own policy
+#   is to script and monitor every step of my workflow except for version
+#   control -- always execute your commits manually!
+#
+#                                                       ~~ (c) SRW, 05 Aug 2012
 
-node_modules
-npm-debug.log
+#-  Vim swap files
+*.swp
+
+#-  OS generated files
+.DS_Store*
+ehthumbs.db
+Icon\?
+.localized
+Thumbs.db
+
+#-  vim:set syntax=gitconfig:
