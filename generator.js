@@ -2,7 +2,7 @@
 
 //- generator.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 09 Aug 2012
+//                                                  ~~ last updated 13 Aug 2012
 
 (function () {
     'use strict';
@@ -150,7 +150,7 @@
         for (i = 0; i < n; i += 1) {
             y[i] = stack[i]();
         }
-        $('#report-output').val(trim(y.join(' '))).focus();
+        $('#report-output').val(trim(y.join('  '))).focus();
         return;
     };
 
