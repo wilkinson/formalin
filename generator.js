@@ -2,7 +2,7 @@
 
 //- generator.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 13 Aug 2012
+//                                                  ~~ last updated 23 Aug 2012
 
 (function () {
     'use strict';
@@ -279,7 +279,7 @@
                     ply(val).by(function (key, val) {
                      // This function needs documentation.
                         if ((first === true) && ($(val).is(':checked'))) {
-                            first = false; 
+                            first = false;
                             x.push($(val).data('cycle-instance'));
                         }
                         return;
@@ -356,7 +356,32 @@
 
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
-        generate_report();
+        if (location.search.length === 0) {
+         // If no template has been specified, grab "main.js" from the "master"
+         // branch as a default.
+            location.search = 'https://raw.github.com/wilkinson/hpath/' +
+                'master/main.js';
+            return;
+        }
+        (function script_loader(args) {
+         // This function needs documentation.
+            $.getScript(args.shift()).done(function (script, textStatus) {
+             // This function needs documentation.
+                if (args.length === 0) {
+                 // Finally, when all scripts have loaded, we generate the
+                 // report for the first time :-)
+                    generate_report();
+                } else {
+                    script_loader(args);
+                }
+                return;
+            }).fail(function (jqxhr, settings, exception) {
+             // This function needs documentation.
+                window.alert('Error: ' + exception);
+                return;
+            });
+            return;
+        }(location.search.slice(1).split('&')));
         return;
     });
 
