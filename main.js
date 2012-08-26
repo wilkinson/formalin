@@ -175,14 +175,14 @@ sentence({
     }),
     d: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: String.fromCharCode(8593),
         states: [
             undefined, '', 'mildly', 'markedly'
         ]
     }),
     f: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: String.fromCharCode(8595),
         states: [
             undefined, '', 'mildly', 'markedly'
         ]
@@ -232,14 +232,14 @@ sentence({
     }),
     n: ordinal({
         long_name:  'increased in number',
-        short_name: 'increased',
+        short_name: String.fromCharCode(8593),
         states: [
             undefined, 'mildly', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
-        short_name: 'decreased',
+        short_name: String.fromCharCode(8595),
         states: [
             undefined, 'mildly', 'markedly'
         ]
@@ -285,14 +285,14 @@ sentence({
     }),
     n: ordinal({
         long_name:  'increased in number',
-        short_name: 'increased',
+        short_name: String.fromCharCode(8593),
         states: [
             undefined, 'mildly', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
-        short_name: 'decreased',
+        short_name: String.fromCharCode(8595),
         states: [
             undefined, 'mildly', 'markedly'
         ]
@@ -331,7 +331,7 @@ sentence({
     }),
     n: ordinal({
         long_name:  'increased in number',
-        short_name: 'increased',
+        short_name: String.fromCharCode(8593),
         states: [
             undefined, 'relatively', 'mildly', 'markedly'
         ]
@@ -363,7 +363,7 @@ sentence({
     }),
     o: ordinal({
         long_name:  'decreased in number',
-        short_name: 'decreased',
+        short_name: String.fromCharCode(8595),
         states: [
             undefined, '', 'mildly', 'markedly'
         ]
