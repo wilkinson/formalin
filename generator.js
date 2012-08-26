@@ -2,7 +2,7 @@
 
 //- generator.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 13 Aug 2012
+//                                                  ~~ last updated 25 Aug 2012
 
 (function () {
     'use strict';
@@ -44,9 +44,8 @@
                 return;
             },
             type: 'radio'
-        }).
-            data('cycle-instance', cycle(obj)).
-            after('<label for="' + key + '">' + obj.short_name + '</label>');
+        }).data('cycle-instance', cycle(obj))
+            .after('<label for="' + key + '">' + obj.short_name + '</label>');
     };
 
     capitalize = function (x) {
@@ -177,9 +176,8 @@
                 return;
             },
             type: 'checkbox'
-        }).
-            data('cycle-instance', cycle(obj)).
-            after('<label for="' + key + '">' + obj.short_name + '</label>');
+        }).data('cycle-instance', cycle(obj))
+            .after('<label for="' + key + '">' + obj.short_name + '</label>');
     };
 
     ply = function () {
@@ -219,6 +217,7 @@
 
     sentence = function (obj) {
      // This function needs documentation.
+        /*jslint regexp: true */
         if ((obj instanceof Object) === false) {
             throw new TypeError('Argument must be an object.');
         }
@@ -230,17 +229,17 @@
         }
         var key, pattern, temp;
         key = uuid();
-        pattern = /{([^{}]+)}/g;
+        pattern = /[{]([^{}]+)[}]/g;
 
         $('<p id="' + key + '"></p>').appendTo('#report-input');
 
      // First, we will replace the HTML in the presentation layer.
 
-        temp = obj.format.match(/([^{}]+|{[^{}]+})/g);
+        temp = obj.format.match(/([^{}]+|[{][^{}]+[}])/g);
 
         ply(temp).by(function (key, val) {
          // This function needs documentation.
-            if ((/^{[^{}]+}$/).test(val) === false) {
+            if ((/^[{][^{}]+[}]$/).test(val) === false) {
                 return;
             }
             var i, n, x, y;
@@ -279,7 +278,7 @@
                     ply(val).by(function (key, val) {
                      // This function needs documentation.
                         if ((first === true) && ($(val).is(':checked'))) {
-                            first = false; 
+                            first = false;
                             x.push($(val).data('cycle-instance'));
                         }
                         return;
@@ -356,7 +355,32 @@
 
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
-        generate_report();
+        if (location.search.length === 0) {
+         // If no template has been specified, grab "main.js" from the "master"
+         // branch as a default.
+            location.search = 'https://raw.github.com/wilkinson/hpath/' +
+                'master/main.js';
+            return;
+        }
+        (function script_loader(args) {
+         // This function needs documentation.
+            $.getScript(args.shift()).done(function (script, textStatus) {
+             // This function needs documentation.
+                if (args.length === 0) {
+                 // Finally, when all scripts have loaded, we generate the
+                 // report for the first time :-)
+                    generate_report();
+                } else {
+                    script_loader(args);
+                }
+                return;
+            }).fail(function (jqxhr, settings, exception) {
+             // This function needs documentation.
+                window.alert('Error: ' + exception);
+                return;
+            });
+            return;
+        }(location.search.slice(1).split('&')));
         return;
     });
 
