@@ -1,7 +1,8 @@
 //- JavaScript source code
 
 //- main.js ~~
-//                                                      ~~ (c) SRW, 09 Aug 2012
+//                                              ~~ (c) SRW and BCH, 09 Aug 2012
+//                                                  ~~ last updated 25 Aug 2012
 
 sentence({
     format: 'Red blood cells are {x y}. ',
@@ -90,14 +91,14 @@ sentence({
         states: [
             undefined, 'rare', 'few', 'scattered', 'occasional', 'several'
         ]
-    }), 
+    }),
     f: ordinal({
         long_name:  'schistocytes',
         short_name: 'schisto',
         states: [
             undefined, 'rare', 'few', 'scattered', 'occasional', 'several'
         ]
-    }), 
+    }),
     g: ordinal({
         long_name:  'spherocytes',
         short_name: 'sphero',
@@ -142,16 +143,16 @@ sentence({
         states: [
             undefined, 'rare', 'few', 'scattered', 'occasional', 'several'
         ]
-    }),  
+    }),
     d: ordinal({
         long_name:  'RBCs with Howell-Jolly bodies',
         short_name: 'Howell-Jolly bodies',
         states: [
             undefined, 'rare', 'few', 'scattered', 'occasional', 'several'
         ]
-    })        
     })
-;
+});
+
 sentence({
     format: '{a} is present. ',
     a: ordinal({
@@ -161,16 +162,15 @@ sentence({
             undefined, ''
         ]
     })
-       
-    })
-;
+});
+
 sentence({
     format: 'White blood cells are {b d f} and consist predominantly of {g}. ',
     b: ordinal({
         long_name:  'within normal limits',
         short_name: 'normal',
         states: [
-            undefined, '', 
+            undefined, ''
         ]
     }),
     d: ordinal({
@@ -202,6 +202,7 @@ sentence({
         }
     ])
 });
+
 sentence({
     format: '{m n} are identified. ',
     m: ordinal({
@@ -210,15 +211,16 @@ sentence({
         states: [
             undefined, 'no', 'rare', 'a few', 'several'
         ]
-        }),
+    }),
     n: ordinal({
         long_name:  'circulating blasts',
         short_name: 'blasts',
         states: [
             undefined, 'no', 'rare', 'a few', 'several'
         ]
-        })
-   });
+    })
+});
+
 sentence({
     format: 'Neutrophils are {m n o} with {a c b d}. ',
     m: ordinal({
@@ -227,50 +229,51 @@ sentence({
         states: [
             undefined, ''
         ]
-        }),
+    }),
     n: ordinal({
         long_name:  'increased in number',
         short_name: 'increased',
         states: [
             undefined, 'mildly', 'markedly'
         ]
-        }),
+    }),
     o: ordinal({
         long_name:  'decreased in number',
         short_name: 'decreased',
         states: [
             undefined, 'mildly', 'markedly'
         ]
-        }),
-     a: ordinal({
+    }),
+    a: ordinal({
         long_name:  'unremarkable morphology',
         short_name: 'unremarkable morphology',
         states: [
             undefined, ''
         ]
-        }),
-      b: ordinal({
+    }),
+    b: ordinal({
         long_name:  'neutrophils with hypersegmented nuclei',
         short_name: 'hypersegmented',
         states: [
             undefined, 'rare', 'a few', 'occasional', 'several'
         ]
-        }),
-      c: ordinal({
+    }),
+    c: ordinal({
         long_name:  'toxic changes',
         short_name: 'toxic',
         states: [
             undefined, '', 'mild', 'moderate', 'severe'
         ]
-        }),
-       d: ordinal({
+    }),
+    d: ordinal({
         long_name:  'band forms',
         short_name: 'bands',
         states: [
             undefined, 'rare', 'a few', 'occasional', 'several'
         ]
-        })
-   });
+    })
+});
+
 sentence({
     format: 'Lymphocytes are {m n o} with {a b c}. ',
     m: ordinal({
@@ -279,43 +282,44 @@ sentence({
         states: [
             undefined, ''
         ]
-        }),
+    }),
     n: ordinal({
         long_name:  'increased in number',
         short_name: 'increased',
         states: [
             undefined, 'mildly', 'markedly'
         ]
-        }),
+    }),
     o: ordinal({
         long_name:  'decreased in number',
         short_name: 'decreased',
         states: [
             undefined, 'mildly', 'markedly'
         ]
-        }),
-     a: ordinal({
+    }),
+    a: ordinal({
         long_name:  'unremarkable morphology',
         short_name: 'unremarkable morphology',
         states: [
             undefined, ''
         ]
-        }),
-      b: ordinal({
+    }),
+    b: ordinal({
         long_name:  'large granular lymphocytes',
         short_name: 'LGL',
         states: [
             undefined, 'rare', 'a few', 'occasional', 'several'
         ]
-        }),
-      c: ordinal({
+    }),
+    c: ordinal({
         long_name:  'activated forms',
         short_name: 'activated',
         states: [
-             undefined, 'rare', 'a few', 'occasional', 'several'
+            undefined, 'rare', 'a few', 'occasional', 'several'
         ]
-        })
-   });
+    })
+});
+
 sentence({
     format: 'Monocytes are {m n} with {x y}. ',
     m: ordinal({
@@ -324,22 +328,23 @@ sentence({
         states: [
             undefined, ''
         ]
-        }),
+    }),
     n: ordinal({
         long_name:  'increased in number',
         short_name: 'increased',
         states: [
-            undefined, 'relatively','mildly', 'markedly'
+            undefined, 'relatively', 'mildly', 'markedly'
         ]
-        }),
+    }),
     x: ordinal({
         long_name:  'mature morphology',
         short_name: 'mature',
         states: [
-            undefined, '','', ''
+            undefined, '', '', ''
         ]
-        })
-      });
+    })
+});
+
 sentence({
     format: 'Platelets are {m n o} with {a b c d}. ',
     m: ordinal({
@@ -348,50 +353,49 @@ sentence({
         states: [
             undefined, ''
         ]
-        }),
+    }),
     n: ordinal({
         long_name:  'increased in number',
         short_name: String.fromCharCode(8593),
         states: [
             undefined, '', 'mildly', 'markedly'
         ]
-        }),
+    }),
     o: ordinal({
         long_name:  'decreased in number',
         short_name: 'decreased',
         states: [
             undefined, '', 'mildly', 'markedly'
         ]
-        }),
-     a: ordinal({
+    }),
+    a: ordinal({
         long_name:  'unremarkable morphology',
         short_name: 'unremarkable morphology',
         states: [
             undefined, ''
         ]
-        }),
-      b: ordinal({
+    }),
+    b: ordinal({
         long_name:  'large forms',
         short_name: 'large',
         states: [
             undefined, 'rare', 'a few', 'occasional', 'several'
         ]
-        }),
-      c: ordinal({
+    }),
+    c: ordinal({
         long_name:  'giant platelets',
         short_name: 'giant',
         states: [
-             undefined, 'rare', 'a few', 'occasional', 'several'
+            undefined, 'rare', 'a few', 'occasional', 'several'
         ]
-        }),
-      d: ordinal({
+    }),
+    d: ordinal({
         long_name:  'platelet clumps',
         short_name: 'clumps',
         states: [
-             undefined, 'rare', 'a few', 'occasional', 'several'
+            undefined, 'rare', 'a few', 'occasional', 'several'
         ]
-        })
-   });
+    })
+});
 
-;
 //- vim:set syntax=javascript:
