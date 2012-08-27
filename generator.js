@@ -80,13 +80,8 @@
         y = [];
         ply(x).by(function (i, obj) {
          // This function needs documentation.
-            var temp;
-            try {
-                temp = Array.prototype.slice.call(binary(obj));
-                Array.prototype.push.apply(y, temp);
-            } catch (err) {
-                console.error('CAUGHT: Inside `categorical`', err);
-            }
+            Array.prototype.push.apply(y,
+                Array.prototype.slice.call(binary(obj)));
             return;
         });
         ply(y).by(function (key, val) {
