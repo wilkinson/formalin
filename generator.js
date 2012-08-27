@@ -2,7 +2,7 @@
 
 //- generator.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 25 Aug 2012
+//                                                  ~~ last updated 27 Aug 2012
 
 (function () {
     'use strict';
@@ -20,7 +20,8 @@
  // Declarations
 
     var $, binary, capitalize, categorical, conjoin, Cycle, cycle,
-        generate_report, isFunction, ordinal, ply, sentence, stack, trim, uuid;
+        generate_report, isFunction, off, ordinal, ply, sentence, stack, trim,
+        uuid;
 
  // Definitions
 
@@ -31,7 +32,7 @@
         if ((obj instanceof Object) === false) {
             throw new TypeError('Argument must be an object.');
         }
-        obj.states = [undefined, ''];
+        obj.states = [off, ''];
         var key = uuid();
         return $('<input/>', {
             id: key,
@@ -157,6 +158,11 @@
      // This function returns `true` only if and only if `f` is a Function.
      // The second condition is necessary to return `false` for a RegExp.
         return ((typeof f === 'function') && (f instanceof Function));
+    };
+
+    off = function () {
+     // This function needs documentation.
+        return;
     };
 
     ordinal = function (obj) {
@@ -327,7 +333,7 @@
     Cycle.prototype.toJSON = function () {
      // This function may behave strangely if external code modifies the value
      // of `this.current` directly ...
-        if (this.states[this.current] !== undefined) {
+        if (this.states[this.current] !== off) {
             return trim(this.states[this.current] + ' ' + this.long_name);
         }
      // When a `toJSON` method returns `undefined`, as this one will, the value
@@ -338,7 +344,7 @@
     Cycle.prototype.toString = Cycle.prototype.valueOf = function () {
      // This function may behave strangely if external code modifies the value
      // of `this.current` directly ...
-        if (this.states[this.current] !== undefined) {
+        if (this.states[this.current] !== off) {
             return trim(this.states[this.current] + ' ' + this.long_name);
         }
         return '';
@@ -348,6 +354,7 @@
 
     window.binary = binary;
     window.categorical = categorical;
+    window.off = off;
     window.ordinal = ordinal;
     window.sentence = sentence;
 
