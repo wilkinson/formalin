@@ -21,7 +21,7 @@
 
     var $, binary, capitalize, categorical, comma, Cycle, cycle,
         generate_report, isFunction, off, ordinal, ply, sentence,
-        stack, trim, uuid;
+        stack, tap, trim, uuid;
 
  // Definitions
 
@@ -66,7 +66,6 @@
         var callback, name, y;
         callback = function (evt) {
          // This function needs documentation.
-            console.log('(triggered)');
             var id, pred;
             id = evt.target.id;
             pred = '[type="radio"][name="' + name + '"][id!="' + id + '"]';
@@ -87,7 +86,7 @@
         ply(y).by(function (key, val) {
          // This function needs documentation.
             if (val.type === 'radio') {
-                $(val).attr('name', name).on('click touchstart', callback);
+                tap($(val).attr('name', name), callback);
             }
             return;
         });
@@ -241,6 +240,10 @@
 
         $('<p id="' + key + '"></p>').appendTo('#report-input');
 
+     // Preprocess to remove accidental concatenations ...
+
+        obj.format = obj.format.split('}{').join('} {');
+
      // First, we will replace the HTML in the presentation layer.
 
         temp = obj.format.match(/([^{}]+|[{][^{}]+[}])/g);
@@ -301,6 +304,11 @@
     };
 
     stack = [];
+
+    tap = function (x, f) {
+     // This function needs documentation.
+        return x.on('touchstart click', f);
+    };
 
     trim = function (x) {
      // This function needs documentation.
