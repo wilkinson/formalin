@@ -362,16 +362,18 @@
 
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
+        console.log('Running inside the `onready` function ...');
         if (location.search.length === 0) {
          // If no template has been specified, grab "main.js" from the "master"
          // branch as a default.
             location.replace(location.href +
-                ((location.href.slice(-1) === '?') ? '' : '?') +
+                ((location.href.slice(-1) === '?') ? '' : '?') + 'main.js')
                 'https://raw.github.com/wilkinson/hpath/master/main.js');
             return;
         }
         (function script_loader(args) {
          // This function needs documentation.
+            console.log('Inside the `script_loader` ...');
             $.getScript(args.shift()).done(function (script, textStatus) {
              // This function needs documentation.
                 if (args.length === 0) {
@@ -391,6 +393,8 @@
         }(location.search.slice(1).split('&')));
         return;
     });
+
+    console.log('Reached bottom of "generator.js" ...');
 
  // That's all, folks!
 
