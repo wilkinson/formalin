@@ -172,14 +172,14 @@ sentence({
         long_name:  'increased',
         short_name: String.fromCharCode(8593),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     f: ordinal({
         long_name:  'decreased',
         short_name: String.fromCharCode(8595),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     g: categorical([
@@ -226,14 +226,14 @@ sentence({
         long_name:  'increased in number',
         short_name: String.fromCharCode(8593),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
         short_name: String.fromCharCode(8595),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     a: binary({
@@ -273,14 +273,14 @@ sentence({
         long_name:  'increased in number',
         short_name: String.fromCharCode(8593),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
         short_name: String.fromCharCode(8595),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     a: binary({
@@ -332,14 +332,14 @@ sentence({
         long_name:  'increased in number',
         short_name: String.fromCharCode(8593),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
         short_name: String.fromCharCode(8595),
         states: [
-            off, 'mildly', 'markedly'
+            off, 'mildly', '', 'markedly'
         ]
     }),
     a: binary({
