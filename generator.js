@@ -81,7 +81,8 @@
         ply(x).by(function (i, obj) {
          // This function needs documentation.
             try {
-            Array.prototype.push.apply(y, binary(obj));
+                Array.prototype.push.apply(y,
+                    Array.prototype.concat.apply([], [binary(obj)]));
             } catch (err) {
                 console.error('CAUGHT: Inside `categorical`', err);
             }
@@ -218,11 +219,7 @@
                 }
                 n = x.length;
                 for (i = 0; i < n; i += 1) {
-                    try {
                     f.apply(this, x[i]);
-                    } catch (err) {
-                        console.error('CAUGHT: Inside `ply`', err);
-                    }
                 }
                 return;
             }
@@ -267,11 +264,7 @@
             return;
         });
 
-        try {
         $.fn.append.apply($('#' + key), Array.prototype.concat.apply([], temp));
-        } catch (err) {
-            console.error('CAUGHT: inside `sentence`', err);
-        }
 
      // Then, we will close over these variables and add to a stack that will
      // be processed by `generate_report` repeatedly. Does this start to look
@@ -374,7 +367,6 @@
 
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
-        console.log('Running inside the `onready` function ...');
         if (location.search.length === 0) {
          // If no template has been specified, grab "main.js" from the "master"
          // branch as a default.
@@ -385,7 +377,6 @@
         }
         (function script_loader(args) {
          // This function needs documentation.
-            console.log('Inside the `script_loader` ...');
             $.getScript(args.shift()).done(function (script, textStatus) {
              // This function needs documentation.
                 if (args.length === 0) {
@@ -405,8 +396,6 @@
         }(location.search.slice(1).split('&')));
         return;
     });
-
-    console.log('Reached bottom of "generator.js" ...');
 
  // That's all, folks!
 
