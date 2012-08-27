@@ -66,6 +66,7 @@
         var callback, name, y;
         callback = function (evt) {
          // This function needs documentation.
+            console.log('(triggered)');
             var id, pred;
             id = evt.target.id;
             pred = '[type="radio"][name="' + name + '"][id!="' + id + '"]';
