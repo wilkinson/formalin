@@ -21,7 +21,7 @@
 
     var $, binary, capitalize, categorical, comma, Cycle, cycle,
         generate_report, isFunction, off, ordinal, ply, sentence,
-        stack, tap, trim, uuid;
+        stack, tap, title, trim, uuid;
 
  // Definitions
 
@@ -314,6 +314,12 @@
         return x.on('touchstart click', f);
     };
 
+    title = function (x) {
+     // This function needs documentation.
+        $('#title').html(x);
+        return;
+    };
+
     trim = function (x) {
      // This function needs documentation.
         if (String.prototype.hasOwnProperty('trim')) {
@@ -371,6 +377,7 @@
     window.off = off;
     window.ordinal = ordinal;
     window.sentence = sentence;
+    window.title = title;
 
  // Invocations
 
