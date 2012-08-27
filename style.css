@@ -22,6 +22,11 @@ h1 {
     text-align: center;
 }
 
+html {
+ /* This snippet makes text look nicer (source: http://goo.gl/fr85e). */
+    -webkit-font-smoothing: antialiased;
+}
+
 input {
  /*
     Hide the actual input element from the user. Although this would seem to
@@ -78,6 +83,41 @@ textarea {
     font-size: 12pt;
     resize: both;
     width: 100%;
+}
+
+.fork-me {
+ /* There is a much fancier version available at http://goo.gl/CSWv3. */
+    border-bottom: none;
+    left: -65px;
+    height: 30px;
+    top: 40px;
+    position: absolute;
+    text-decoration: none;
+    width: 250px;
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.fork-me span {
+    background: black;
+    color: white;
+    font-size: 14px;
+    left: 0;
+    padding: 5px 0;
+    position: absolute;
+    text-align: center;
+    width: 250px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+}
+
+.fork-me span:hover {
+    background: blue;
 }
 
 /*- vim:set syntax=css: */
