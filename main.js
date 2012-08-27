@@ -5,7 +5,7 @@
 //                                                  ~~ last updated 27 Aug 2012
 
 sentence({
-    format: 'Red blood cells are {x y}. ',
+    format: 'Red blood cells are {x y}.',
     x: categorical([
         {
             long_name:  'microcytic',
@@ -37,7 +37,7 @@ sentence({
 });
 
 sentence({
-    format: 'Red blood cells show {x y z}. ',
+    format: 'Red blood cells show {x y z}.',
     x: ordinal({
         long_name:  'anisopoikilocytosis',
         short_name: 'APK',
@@ -56,7 +56,7 @@ sentence({
 });
 
 sentence({
-    format: '{a b c d e f g h i} are present. ',
+    format: '{a b c d e f g h i} are present.',
     a: ordinal({
         long_name:  'acanthocytes',
         short_name: 'acantho',
@@ -122,7 +122,7 @@ sentence({
     })
 });
 sentence({
-    format: '{a b c d} are noted. ',
+    format: '{a b c d} are noted.',
     a: ordinal({
         long_name:  'red blood cells with basophilic stippling',
         short_name: 'basophilic stippling',
@@ -154,7 +154,7 @@ sentence({
 });
 
 sentence({
-    format: '{a} is present. ',
+    format: '{a} is present.',
     a: ordinal({
         long_name:  'rouleaux formation',
         short_name: 'rouleaux',
@@ -165,7 +165,7 @@ sentence({
 });
 
 sentence({
-    format: 'White blood cells are {b d f} and consist predominantly of {g}. ',
+    format: 'White blood cells are {b d f} and consist predominantly of {g}.',
     b: ordinal({
         long_name:  'within normal limits',
         short_name: 'normal',
@@ -204,7 +204,7 @@ sentence({
 });
 
 sentence({
-    format: '{m n} are identified. ',
+    format: '{m n} are identified.',
     m: ordinal({
         long_name:  'Sezary-like cells',
         short_name: 'Sezary',
@@ -222,7 +222,7 @@ sentence({
 });
 
 sentence({
-    format: 'Neutrophils are {m n o} with {a c b d}. ',
+    format: 'Neutrophils are {m n o} with {a c b d}.',
     m: ordinal({
         long_name:  'present',
         short_name: 'present',
@@ -275,7 +275,7 @@ sentence({
 });
 
 sentence({
-    format: 'Lymphocytes are {m n o} with {a b c}. ',
+    format: 'Lymphocytes are {m n o} with {a b c}.',
     m: ordinal({
         long_name:  'present',
         short_name: 'present',
@@ -321,7 +321,7 @@ sentence({
 });
 
 sentence({
-    format: 'Monocytes are {m n} with {x y}. ',
+    format: 'Monocytes are {m n} with {x y}.',
     m: ordinal({
         long_name:  'present but not increased',
         short_name: 'present',
@@ -346,7 +346,7 @@ sentence({
 });
 
 sentence({
-    format: 'Platelets are {m n o} with {a b c d}. ',
+    format: 'Platelets are {m n o} with {a b c d}.',
     m: ordinal({
         long_name:  'within normal limits',
         short_name: 'WNL',
