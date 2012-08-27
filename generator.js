@@ -19,9 +19,9 @@
 
  // Declarations
 
-    var $, binary, capitalize, categorical, conjoin, Cycle, cycle,
-        generate_report, isFunction, off, ordinal, ply, sentence, stack, trim,
-        uuid;
+    var $, binary, capitalize, categorical, comma, Cycle, cycle,
+        generate_report, isFunction, off, ordinal, ply, sentence,
+        stack, trim, uuid;
 
  // Definitions
 
@@ -80,8 +80,7 @@
         y = [];
         ply(x).by(function (i, obj) {
          // This function needs documentation.
-            Array.prototype.push.apply(y,
-                Array.prototype.slice.call(binary(obj)));
+            y.push.apply(y, Array.prototype.slice.call(binary(obj)));
             return;
         });
         ply(y).by(function (key, val) {
@@ -94,7 +93,7 @@
         return y;
     };
 
-    conjoin = function (x) {
+    comma = function (x) {
      // This function joins the elements of an array using the "Oxford comma".
         if ((x instanceof Array) === false) {
             throw new TypeError('Argument must be an array.');
@@ -275,7 +274,7 @@
             ply(temp).by(function (key, val) {
              // This function needs documentation.
                 if (typeof val === 'string') {
-                    y.push(conjoin(x) + val);
+                    y.push(comma(x) + val);
                     x = [];
                     return;
                 }
