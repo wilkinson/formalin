@@ -1,6 +1,6 @@
 //- JavaScript source code
 
-//- main.js ~~
+//- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
 //                                                  ~~ last updated 27 Aug 2012
 
