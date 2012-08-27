@@ -121,6 +121,7 @@ sentence({
         ]
     })
 });
+
 sentence({
     format: '{a b c d} are noted.',
     a: ordinal({
@@ -155,36 +156,30 @@ sentence({
 
 sentence({
     format: '{a} is present.',
-    a: ordinal({
+    a: binary({
         long_name:  'rouleaux formation',
-        short_name: 'rouleaux',
-        states: [
-            off, ''
-        ]
+        short_name: 'rouleaux'
     })
 });
 
 sentence({
     format: 'White blood cells are {b d f} and consist predominantly of {g}.',
-    b: ordinal({
+    b: binary({
         long_name:  'within normal limits',
-        short_name: 'normal',
-        states: [
-            off, ''
-        ]
+        short_name: 'normal'
     }),
     d: ordinal({
         long_name:  'increased',
         short_name: String.fromCharCode(8593),
         states: [
-            off, '', 'mildly', 'markedly'
+            off, 'mildly', 'markedly'
         ]
     }),
     f: ordinal({
         long_name:  'decreased',
         short_name: String.fromCharCode(8595),
         states: [
-            off, '', 'mildly', 'markedly'
+            off, 'mildly', 'markedly'
         ]
     }),
     g: categorical([
@@ -223,12 +218,9 @@ sentence({
 
 sentence({
     format: 'Neutrophils are {m n o} with {a c b d}.',
-    m: ordinal({
+    m: binary({
         long_name:  'present',
-        short_name: 'present',
-        states: [
-            off, ''
-        ]
+        short_name: 'present'
     }),
     n: ordinal({
         long_name:  'increased in number',
@@ -244,12 +236,9 @@ sentence({
             off, 'mildly', 'markedly'
         ]
     }),
-    a: ordinal({
+    a: binary({
         long_name:  'unremarkable morphology',
-        short_name: 'unremarkable morphology',
-        states: [
-            off, ''
-        ]
+        short_name: 'unremarkable morphology'
     }),
     b: ordinal({
         long_name:  'neutrophils with hypersegmented nuclei',
@@ -262,7 +251,7 @@ sentence({
         long_name:  'toxic changes',
         short_name: 'toxic',
         states: [
-            off, '', 'mild', 'moderate', 'severe'
+            off, 'mild', 'moderate', 'severe'
         ]
     }),
     d: ordinal({
@@ -276,12 +265,9 @@ sentence({
 
 sentence({
     format: 'Lymphocytes are {m n o} with {a b c}.',
-    m: ordinal({
+    m: binary({
         long_name:  'present',
-        short_name: 'present',
-        states: [
-            off, ''
-        ]
+        short_name: 'present'
     }),
     n: ordinal({
         long_name:  'increased in number',
@@ -297,12 +283,9 @@ sentence({
             off, 'mildly', 'markedly'
         ]
     }),
-    a: ordinal({
+    a: binary({
         long_name:  'unremarkable morphology',
-        short_name: 'unremarkable morphology',
-        states: [
-            off, ''
-        ]
+        short_name: 'unremarkable morphology'
     }),
     b: ordinal({
         long_name:  'large granular lymphocytes',
@@ -321,13 +304,10 @@ sentence({
 });
 
 sentence({
-    format: 'Monocytes are {m n} with {x y}.',
-    m: ordinal({
+    format: 'Monocytes are {m n} with {x}.',
+    m: binary({
         long_name:  'present but not increased',
-        short_name: 'present',
-        states: [
-            off, ''
-        ]
+        short_name: 'present'
     }),
     n: ordinal({
         long_name:  'increased in number',
@@ -336,44 +316,35 @@ sentence({
             off, 'relatively', 'mildly', 'markedly'
         ]
     }),
-    x: ordinal({
+    x: binary({
         long_name:  'mature morphology',
-        short_name: 'mature',
-        states: [
-            off, '', '', ''
-        ]
+        short_name: 'mature'
     })
 });
 
 sentence({
     format: 'Platelets are {m n o} with {a b c d}.',
-    m: ordinal({
+    m: binary({
         long_name:  'within normal limits',
-        short_name: 'WNL',
-        states: [
-            off, ''
-        ]
+        short_name: 'WNL'
     }),
     n: ordinal({
         long_name:  'increased in number',
         short_name: String.fromCharCode(8593),
         states: [
-            off, '', 'mildly', 'markedly'
+            off, 'mildly', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
         short_name: String.fromCharCode(8595),
         states: [
-            off, '', 'mildly', 'markedly'
+            off, 'mildly', 'markedly'
         ]
     }),
-    a: ordinal({
+    a: binary({
         long_name:  'unremarkable morphology',
-        short_name: 'unremarkable morphology',
-        states: [
-            off, ''
-        ]
+        short_name: 'unremarkable morphology'
     }),
     b: ordinal({
         long_name:  'large forms',
