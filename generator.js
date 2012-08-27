@@ -145,13 +145,16 @@
      // This function joins the output from each section's own generating
      // function as text and puts that text into the designated textarea.
      // Because order is important, we can't use the `ply` function here.
-        var i, n, y;
+        var i, n, temp, y;
         n = stack.length;
         y = [];
         for (i = 0; i < n; i += 1) {
-            y[i] = stack[i]();
+            temp = stack[i]();
+            if (temp.length > 0) {
+                y.push(temp);
+            }
         }
-        $('#report-output').val(trim(y.join('  '))).focus();
+        $('#report-output').val(trim(y.join(' '))).focus();
         return;
     };
 
@@ -240,7 +243,8 @@
 
         $('<p id="' + key + '"></p>').appendTo('#report-input');
 
-     // Preprocess to remove accidental concatenations ...
+     // Preprocess to remove unexpected concatenations of input values when
+     // a `format` looks like '...{x y}{z}...' instead of '...{x y} {z}...'.
 
         obj.format = obj.format.split('}{').join('} {');
 
