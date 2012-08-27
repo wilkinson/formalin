@@ -80,7 +80,11 @@
         y = [];
         ply(x).by(function (i, obj) {
          // This function needs documentation.
+            try {
             Array.prototype.push.apply(y, binary(obj));
+            } catch (err) {
+                console.error('CAUGHT: Inside `categorical`', err);
+            }
             return;
         });
         ply(y).by(function (key, val) {
@@ -214,7 +218,11 @@
                 }
                 n = x.length;
                 for (i = 0; i < n; i += 1) {
+                    try {
                     f.apply(this, x[i]);
+                    } catch (err) {
+                        console.error('CAUGHT: Inside `ply`', err);
+                    }
                 }
                 return;
             }
@@ -259,7 +267,11 @@
             return;
         });
 
+        try {
         $.fn.append.apply($('#' + key), Array.prototype.concat.apply([], temp));
+        } catch (err) {
+            console.error('CAUGHT: inside `sentence`', err);
+        }
 
      // Then, we will close over these variables and add to a stack that will
      // be processed by `generate_report` repeatedly. Does this start to look
