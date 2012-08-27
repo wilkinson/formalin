@@ -367,7 +367,7 @@
          // If no template has been specified, grab "main.js" from the "master"
          // branch as a default.
             location.replace(location.href +
-                ((location.href.slice(-1) === '?') ? '' : '?') + 'main.js')
+                ((location.href.slice(-1) === '?') ? '' : '?') +
                 'https://raw.github.com/wilkinson/hpath/master/main.js');
             return;
         }
