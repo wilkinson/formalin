@@ -381,7 +381,7 @@
          // "master" branch as a default.
             location.replace(location.href +
                 ((location.href.slice(-1) === '?') ? '' : '?') +
-                'https://raw.github.com/wilkinson/hpath/master/default.js');
+                'https://raw.github.com/wilkinson/hpath/templates/default.js');
             return;
         }
         (function script_loader(args) {
