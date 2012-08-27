@@ -378,7 +378,7 @@
      // This function runs when jQuery decides the page is ready.
         if (location.search.length === 0) {
          // If no template has been specified, grab "default.js" from the
-         // "master" branch as a default.
+         // "templates" branch as a default.
             location.replace(location.href +
                 ((location.href.slice(-1) === '?') ? '' : '?') +
                 'https://raw.github.com/wilkinson/hpath/templates/default.js');
