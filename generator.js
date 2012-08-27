@@ -86,7 +86,7 @@
         ply(y).by(function (key, val) {
          // This function needs documentation.
             if (val.type === 'radio') {
-                $(val).attr('name', name).click(callback);
+                $(val).attr('name', name).on('click touchstart', callback);
             }
             return;
         });
@@ -144,6 +144,7 @@
     generate_report = function () {
      // This function joins the output from each section's own generating
      // function as text and puts that text into the designated textarea.
+     // Because order is important, we can't use the `ply` function here.
         var i, n, y;
         n = stack.length;
         y = [];
