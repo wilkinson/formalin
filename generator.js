@@ -2,7 +2,7 @@
 
 //- generator.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 09 Aug 2012
+//                                                  ~~ last updated 27 Aug 2012
 
 (function () {
     'use strict';
@@ -19,8 +19,9 @@
 
  // Declarations
 
-    var $, binary, capitalize, categorical, conjoin, Cycle, cycle,
-        generate_report, isFunction, ordinal, ply, sentence, stack, trim, uuid;
+    var $, binary, capitalize, categorical, comma, Cycle, cycle,
+        generate_report, isFunction, off, ordinal, ply, sentence,
+        stack, tap, title, trim, uuid;
 
  // Definitions
 
@@ -31,7 +32,7 @@
         if ((obj instanceof Object) === false) {
             throw new TypeError('Argument must be an object.');
         }
-        obj.states = [undefined, ''];
+        obj.states = [off, ''];
         var key = uuid();
         return $('<input/>', {
             id: key,
@@ -44,9 +45,8 @@
                 return;
             },
             type: 'radio'
-        }).
-            data('cycle-instance', cycle(obj)).
-            after('<label for="' + key + '">' + obj.short_name + '</label>');
+        }).data('cycle-instance', cycle(obj))
+            .after('<label for="' + key + '">' + obj.short_name + '</label>');
     };
 
     capitalize = function (x) {
@@ -80,20 +80,20 @@
         y = [];
         ply(x).by(function (i, obj) {
          // This function needs documentation.
-            Array.prototype.push.apply(y, binary(obj));
+            y.push.apply(y, Array.prototype.slice.call(binary(obj)));
             return;
         });
         ply(y).by(function (key, val) {
          // This function needs documentation.
             if (val.type === 'radio') {
-                $(val).attr('name', name).click(callback);
+                tap($(val).attr('name', name), callback);
             }
             return;
         });
         return y;
     };
 
-    conjoin = function (x) {
+    comma = function (x) {
      // This function joins the elements of an array using the "Oxford comma".
         if ((x instanceof Array) === false) {
             throw new TypeError('Argument must be an array.');
@@ -144,11 +144,15 @@
     generate_report = function () {
      // This function joins the output from each section's own generating
      // function as text and puts that text into the designated textarea.
-        var i, n, y;
+     // Because order is important, we can't use the `ply` function here.
+        var i, n, temp, y;
         n = stack.length;
         y = [];
         for (i = 0; i < n; i += 1) {
-            y[i] = stack[i]();
+            temp = stack[i]();
+            if (temp.length > 0) {
+                y.push(temp);
+            }
         }
         $('#report-output').val(trim(y.join(' '))).focus();
         return;
@@ -158,6 +162,11 @@
      // This function returns `true` only if and only if `f` is a Function.
      // The second condition is necessary to return `false` for a RegExp.
         return ((typeof f === 'function') && (f instanceof Function));
+    };
+
+    off = function () {
+     // This function needs documentation.
+        return;
     };
 
     ordinal = function (obj) {
@@ -177,9 +186,8 @@
                 return;
             },
             type: 'checkbox'
-        }).
-            data('cycle-instance', cycle(obj)).
-            after('<label for="' + key + '">' + obj.short_name + '</label>');
+        }).data('cycle-instance', cycle(obj))
+            .after('<label for="' + key + '">' + obj.short_name + '</label>');
     };
 
     ply = function () {
@@ -219,6 +227,7 @@
 
     sentence = function (obj) {
      // This function needs documentation.
+        /*jslint regexp: true */
         if ((obj instanceof Object) === false) {
             throw new TypeError('Argument must be an object.');
         }
@@ -230,17 +239,22 @@
         }
         var key, pattern, temp;
         key = uuid();
-        pattern = /{([^{}]+)}/g;
+        pattern = /[{]([^{}]+)[}]/g;
 
         $('<p id="' + key + '"></p>').appendTo('#report-input');
 
+     // Preprocess to remove unexpected concatenations of input values when
+     // a `format` looks like '...{x y}{z}...' instead of '...{x y} {z}...'.
+
+        obj.format = obj.format.split('}{').join('} {');
+
      // First, we will replace the HTML in the presentation layer.
 
-        temp = obj.format.match(/([^{}]+|{[^{}]+})/g);
+        temp = obj.format.match(/([^{}]+|[{][^{}]+[}])/g);
 
         ply(temp).by(function (key, val) {
          // This function needs documentation.
-            if ((/^{[^{}]+}$/).test(val) === false) {
+            if ((/^[{][^{}]+[}]$/).test(val) === false) {
                 return;
             }
             var i, n, x, y;
@@ -269,7 +283,7 @@
             ply(temp).by(function (key, val) {
              // This function needs documentation.
                 if (typeof val === 'string') {
-                    y.push(conjoin(x) + val);
+                    y.push(comma(x) + val);
                     x = [];
                     return;
                 }
@@ -279,7 +293,7 @@
                     ply(val).by(function (key, val) {
                      // This function needs documentation.
                         if ((first === true) && ($(val).is(':checked'))) {
-                            first = false; 
+                            first = false;
                             x.push($(val).data('cycle-instance'));
                         }
                         return;
@@ -294,6 +308,17 @@
     };
 
     stack = [];
+
+    tap = function (x, f) {
+     // This function needs documentation.
+        return x.on('touchstart click', f);
+    };
+
+    title = function (x) {
+     // This function needs documentation.
+        $('#title').html(x);
+        return;
+    };
 
     trim = function (x) {
      // This function needs documentation.
@@ -328,7 +353,7 @@
     Cycle.prototype.toJSON = function () {
      // This function may behave strangely if external code modifies the value
      // of `this.current` directly ...
-        if (this.states[this.current] !== undefined) {
+        if (this.states[this.current] !== off) {
             return trim(this.states[this.current] + ' ' + this.long_name);
         }
      // When a `toJSON` method returns `undefined`, as this one will, the value
@@ -339,7 +364,7 @@
     Cycle.prototype.toString = Cycle.prototype.valueOf = function () {
      // This function may behave strangely if external code modifies the value
      // of `this.current` directly ...
-        if (this.states[this.current] !== undefined) {
+        if (this.states[this.current] !== off) {
             return trim(this.states[this.current] + ' ' + this.long_name);
         }
         return '';
@@ -349,14 +374,42 @@
 
     window.binary = binary;
     window.categorical = categorical;
+    window.off = off;
     window.ordinal = ordinal;
     window.sentence = sentence;
+    window.title = title;
 
  // Invocations
 
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
-        generate_report();
+        if (location.search.length === 0) {
+         // If no template has been specified, grab "default.js" from the
+         // "templates" branch as a default.
+            location.replace(location.href +
+                ((location.href.slice(-1) === '?') ? '' : '?') +
+                'https://raw.github.com/wilkinson/hpath/templates/default.js');
+            return;
+        }
+        (function script_loader(args) {
+         // This function needs documentation.
+            $.getScript(args.shift()).done(function (script, textStatus) {
+             // This function needs documentation.
+                if (args.length === 0) {
+                 // Finally, when all scripts have loaded, we generate the
+                 // report for the first time :-)
+                    generate_report();
+                } else {
+                    script_loader(args);
+                }
+                return;
+            }).fail(function (jqxhr, settings, exception) {
+             // This function needs documentation.
+                window.alert('Error: ' + exception);
+                return;
+            });
+            return;
+        }(location.search.slice(1).split('&')));
         return;
     });
 
