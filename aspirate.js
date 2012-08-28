@@ -8,32 +8,32 @@ sentence({
     u: ordinal({
         long_name:  'made up of cellular particles',
         short_name: 'cellular particles',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     v: ordinal({
         long_name:  'paucicellular',
         short_name: 'paucicellular',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     w: ordinal({
         long_name:  'pauciparticulate',
         short_name: 'pauciparticulate',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     x: ordinal({
         long_name:  'trilineage hematopoeisis',
         short_name: 'TLH',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     y: ordinal({
         long_name:  'blasts',
         short_name: 'blasts',
-        states:     [undefined, 'a mildly increased number of','a significantly increased number of']
+        states:     [off, 'a mildly increased number of','a significantly increased number of']
     }),
     z: ordinal({
         long_name:  'plasma cells',
         short_name: 'plasma cells',
-        states:      [undefined, 'a mildly increased number of','a significantly increased number of']
+        states:      [off, 'a mildly increased number of','a significantly increased number of']
     })
 });
 
@@ -42,22 +42,22 @@ sentence({
     u: ordinal({
         long_name:  'predominantly',
         short_name: 'predominantly',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     v: ordinal({
         long_name:  'exclusively',
         short_name: 'exclusively',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     w: ordinal({
         long_name:  'blasts',
         short_name: 'blasts',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     x: ordinal({
         long_name:  'plasma cells',
         short_name: 'plasma cells',
-        states:     [undefined, '']
+        states:     [off, '']
     })
 });
 
@@ -66,22 +66,22 @@ sentence({
     w: ordinal({
         long_name:  'evident',
         short_name: 'evident',
-        states:     [undefined, '']
+        states:     [off, '']
     }),  
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [undefined, '','mildly', 'markedly']
+        states:     [off, '','mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [undefined,'', 'mildly', 'markedly']
+        states:     [off,'', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [undefined, 'with','with sequential', 'with a normal progressive pattern of']
+        states:     [off, 'with','with sequential', 'with a normal progressive pattern of']
     })
 });
 
@@ -90,27 +90,27 @@ sentence({
     w: ordinal({
         long_name:  'evident',
         short_name: 'evident',
-        states:     [undefined, '']
+        states:     [off, '']
     }),  
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [undefined, '','mildly', 'markedly']
+        states:     [off, '','mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [undefined,'', 'mildly', 'markedly']
+        states:     [off,'', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [undefined, 'with','with sequential','with a normal progressive pattern of']
+        states:     [off, 'with','with sequential','with a normal progressive pattern of']
     }),
 z: ordinal({
         long_name:  'megaloblastic changes',
         short_name: 'megaloblastic',
-        states:     [undefined, 'with', 'with mild', 'with marked']
+        states:     [off, 'with', 'with mild', 'with marked']
     })
 });
 
@@ -119,22 +119,22 @@ sentence({
     w: ordinal({
         long_name:  'evident',
         short_name: 'evident',
-        states:     [undefined, '']
+        states:     [off, '']
     }),  
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [undefined, '','mildly', 'markedly']
+        states:     [off, '','mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [undefined,'', 'mildly', 'markedly']
+        states:     [off,'', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [undefined, 'with','with sequential', 'with a normal progressive pattern of']
+        states:     [off, 'with','with sequential', 'with a normal progressive pattern of']
     })
 });
 
@@ -143,37 +143,37 @@ sentence({
     x: ordinal({
         long_name:  'increased in number',
         short_name: 'increased',
-        states:     [undefined, '','mildly', 'markedly']
+        states:     [off, '','mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased in number',
         short_name: 'decreased',
-        states:     [undefined,'', 'mildly', 'markedly']
+        states:     [off,'', 'mildly', 'markedly']
     }),
         y: ordinal({
         long_name:  'adequate',
         short_name: 'adequate',
-        states:     [undefined,'']
+        states:     [off,'']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [undefined,'']
+        states:     [off,'']
     }),
     a: ordinal({
         long_name:  'unremarkable morphology',
         short_name: 'unremarkable',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     b: ordinal({
         long_name:  'hypolobated forms',
         short_name: 'hypolobated',
-        states:     [undefined, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
     }),
     b: ordinal({
         long_name:  'immature forms',
         short_name: 'immature',
-        states:     [undefined, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
     })
 });
 
@@ -182,17 +182,17 @@ sentence({
     x: ordinal({
         long_name:  'plasma cells',
         short_name: 'plasma cells',
-        states:     [undefined, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
     }),
     a: ordinal({
         long_name:  'unremarkable morphology',
         short_name: 'unremarkable',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     b: ordinal({
         long_name:  'atypical features',
         short_name: 'atypical features',
-        states:     [undefined, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
     })
 });
 
@@ -201,7 +201,7 @@ sentence({
     x: ordinal({
         long_name:  'no',
         short_name: 'no',
-        states:     [undefined, '']
+        states:     [off, '']
     })
 });
 
@@ -210,7 +210,7 @@ sentence({
     x: ordinal({
         long_name:  'increase in blasts',
         short_name: 'blasts',
-        states:     [undefined, '']
+        states:     [off, '']
     })
 });
 
@@ -219,7 +219,7 @@ sentence({
     x: ordinal({
         long_name:  'lymphoid aggregates',
         short_name: 'lymphoid aggregates',
-        states:     [undefined, '']
+        states:     [off, '']
     })
 });
 
@@ -228,12 +228,12 @@ sentence({
     x: ordinal({
         long_name:  'shows similar findings',
         short_name: 'similar findings',
-        states:     [undefined, '']
+        states:     [off, '']
     }),
     y: ordinal({
         long_name:  'is paucicellular and inadequate for further evaluation',
         short_name: 'paucicellular',
-        states:     [undefined, '']
+        states:     [off, '']
     })
 });
 
