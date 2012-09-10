@@ -2,7 +2,7 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 27 Aug 2012
+//                                                  ~~ last updated 10 Sep 2012
 
 title('Hematopathology Report');
 
@@ -172,14 +172,14 @@ sentence({
     }),
     d: ordinal({
         long_name:  'increased',
-        short_name: String.fromCharCode(8593),
+        short_name: '\u2191',
         states: [
             off, 'mildly', '', 'markedly'
         ]
     }),
     f: ordinal({
         long_name:  'decreased',
-        short_name: String.fromCharCode(8595),
+        short_name: '\u2193',
         states: [
             off, 'mildly', '', 'markedly'
         ]
@@ -203,8 +203,8 @@ sentence({
 sentence({
     format: '{m n} are identified.',
     m: ordinal({
-        long_name:  'Sezary-like cells',
-        short_name: 'Sezary',
+        long_name:  'S\u00e9zary-like cells',
+        short_name: 'S\u00e9zary',
         states: [
             off, 'no', 'rare', 'a few', 'several'
         ]
@@ -226,14 +226,14 @@ sentence({
     }),
     n: ordinal({
         long_name:  'increased in number',
-        short_name: String.fromCharCode(8593),
+        short_name: '\u2191',
         states: [
             off, 'mildly', '', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
-        short_name: String.fromCharCode(8595),
+        short_name: '\u2193',
         states: [
             off, 'mildly', '', 'markedly'
         ]
@@ -243,7 +243,7 @@ sentence({
         short_name: 'unremarkable morphology'
     }),
     b: ordinal({
-        long_name:  'neutrophils with hypersegmented nuclei',
+        long_name:  'instances of hypersegmented nuclei',
         short_name: 'hypersegmented',
         states: [
             off, 'rare', 'a few', 'occasional', 'several'
@@ -273,14 +273,14 @@ sentence({
     }),
     n: ordinal({
         long_name:  'increased in number',
-        short_name: String.fromCharCode(8593),
+        short_name: '\u2191',
         states: [
             off, 'mildly', '', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
-        short_name: String.fromCharCode(8595),
+        short_name: '\u2193',
         states: [
             off, 'mildly', '', 'markedly'
         ]
@@ -313,7 +313,7 @@ sentence({
     }),
     n: ordinal({
         long_name:  'increased in number',
-        short_name: String.fromCharCode(8593),
+        short_name: '\u2191',
         states: [
             off, 'relatively', 'mildly', 'markedly'
         ]
@@ -332,14 +332,14 @@ sentence({
     }),
     n: ordinal({
         long_name:  'increased in number',
-        short_name: String.fromCharCode(8593),
+        short_name: '\u2191',
         states: [
             off, 'mildly', '', 'markedly'
         ]
     }),
     o: ordinal({
         long_name:  'decreased in number',
-        short_name: String.fromCharCode(8595),
+        short_name: '\u2193',
         states: [
             off, 'mildly', '', 'markedly'
         ]
