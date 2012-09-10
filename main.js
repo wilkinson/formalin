@@ -1,8 +1,8 @@
 //- JavaScript source code
 
-//- generator.js ~~
+//- main.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 27 Aug 2012
+//                                                  ~~ last updated 10 Sep 2012
 
 (function () {
     'use strict';
