@@ -154,7 +154,7 @@
                 y.push(temp);
             }
         }
-        $('#report-output').val(trim(y.join(' '))).focus();
+        $('#report-output').val(trim(y.join(' '))); //.focus();
         return;
     };
 
