@@ -2,7 +2,7 @@ HPath
 =====
 
 This tool is a browser-based, user-extensible report generator for clinical
-environments, as outlined by our recently accepted
+environments, as outlined in our recently accepted
 [abstract](https://docs.google.com/document/pub?id=1FiF-YZFOuURaMsRb71Baaw4WjKv19LZGtbrI9WMx7W8).
 
 The tool is deployed as a web application composed entirely from static content
