@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 10 Sep 2012
+//                                                  ~~ last updated 08 Oct 2012
 
 (function () {
     'use strict';
@@ -14,14 +14,16 @@
  // Prerequisites
 
     if (window.hasOwnProperty('jQuery') === false) {
+     // NOTE: It also needs to be version 1.7.2. I have had trouble getting it
+     // to work with "newer" versions of jQuery, and I'm not sure why yet ...
         throw new Error('jQuery is missing.');
     }
 
  // Declarations
 
     var $, binary, capitalize, categorical, comma, Cycle, cycle,
-        generate_report, isFunction, off, ordinal, ply, sentence,
-        stack, tap, title, trim, uuid;
+        generate_report, isFunction, off, ordinal, ply, section,
+        sentence, tap, trim, uuid;
 
  // Definitions
 
@@ -145,15 +147,22 @@
      // This function joins the output from each section's own generating
      // function as text and puts that text into the designated textarea.
      // Because order is important, we can't use the `ply` function here.
-        var i, n, temp, y;
-        n = stack.length;
-        y = [];
-        for (i = 0; i < n; i += 1) {
-            temp = stack[i]();
-            if (temp.length > 0) {
-                y.push(temp);
+        var y = [];
+        $('.section').each(function (key, val) {
+         // This function needs documentation.
+            var i, n, stack, temp, x;
+            stack = $(this).data('stack');
+            n = stack.length;
+            x = [];
+            for (i = 0; i < n; i += 1) {
+                temp = stack[i]();
+                if (temp.length > 0) {
+                    x.push(temp);
+                }
             }
-        }
+            y[key] = x;
+            return;
+        });
         $('#report-output').val(trim(y.join(' '))); //.focus();
         return;
     };
@@ -225,6 +234,16 @@
         };
     };
 
+    section = function (x) {
+     // This function needs documentation.
+        if ((typeof x !== 'string') && ((x instanceof String) === false)) {
+            throw new TypeError('Section names must be strings.');
+        }
+        return $('<div id="' + uuid() + '" class="section">' + x + '</div>')
+            .data('stack', [])
+            .insertBefore('#report-output');
+    };
+
     sentence = function (obj) {
      // This function needs documentation.
         /*jslint regexp: true */
@@ -237,11 +256,13 @@
         if (typeof obj.format !== 'string') {
             throw new TypeError('`format` property must be a string.');
         }
-        var key, pattern, temp;
+        var key, parent_section, pattern, stack, temp;
         key = uuid();
+        parent_section = $('.section').last();
         pattern = /[{]([^{}]+)[}]/g;
+        stack = parent_section.data('stack');
 
-        $('<p id="' + key + '"></p>').appendTo('#report-input');
+        $('<p id="' + key + '" class="sentence"></p>').appendTo(parent_section);
 
      // Preprocess to remove unexpected concatenations of input values when
      // a `format` looks like '...{x y}{z}...' instead of '...{x y} {z}...'.
@@ -304,20 +325,14 @@
             });
             return (checked) ? capitalize(y.join('')) : '';
         });
+
+        parent_section.data('stack', stack);
         return;
     };
-
-    stack = [];
 
     tap = function (x, f) {
      // This function needs documentation.
         return x.on('touchstart click', f);
-    };
-
-    title = function (x) {
-     // This function needs documentation.
-        $('#title').html(x);
-        return;
     };
 
     trim = function (x) {
@@ -325,7 +340,7 @@
         if (String.prototype.hasOwnProperty('trim')) {
             return x.trim();
         }
-        return x.replace(/^\s*|\s*$/g, '');
+        return x.replace(/^\s+|\s+$/g, '');
     };
 
     uuid = function () {
@@ -376,8 +391,8 @@
     window.categorical = categorical;
     window.off = off;
     window.ordinal = ordinal;
+    window.section = section;
     window.sentence = sentence;
-    window.title = title;
 
  // Invocations
 

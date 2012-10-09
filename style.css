@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 03 Aug 2012
- *                                                  ~~ last updated 07 Aug 2012
+ *                                                  ~~ last updated 08 Oct 2012
  */
 
 body {
@@ -118,6 +118,21 @@ textarea {
 
 .fork-me span:hover {
     background: blue;
+}
+
+.section {
+ /*
+    This markup corresponds to the `section` command in the DSL.
+ */
+    font-weight: bold;
+}
+
+.sentence {
+ /*
+    This markup corresponds to the `sentence` command in the DSL.
+ */
+    font-weight: normal;
+    text-align: justify;
 }
 
 /*- vim:set syntax=css: */
