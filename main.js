@@ -160,10 +160,10 @@
                     x.push(temp);
                 }
             }
-            y[key] = x;
+            y[key] = trim(x.join(' '));
             return;
         });
-        $('#report-output').val(trim(y.join(' '))); //.focus();
+        $('#report-output').val(trim(y.join('\n\n'))); // .focus();
         return;
     };
 
