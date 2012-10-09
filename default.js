@@ -2,9 +2,9 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 10 Sep 2012
+//                                                  ~~ last updated 08 Oct 2012
 
-title('Hematopathology Report');
+section('Hematopathology Report');
 
 sentence({
     format: 'Red blood cells are {x y}.',
