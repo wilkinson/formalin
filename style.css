@@ -124,6 +124,7 @@ textarea {
  /*
     This markup corresponds to the `section` command in the DSL.
  */
+    font-size: 18pt;
     font-weight: bold;
 }
 
@@ -131,6 +132,7 @@ textarea {
  /*
     This markup corresponds to the `sentence` command in the DSL.
  */
+    font-size: 12pt;
     font-weight: normal;
     text-align: justify;
 }
