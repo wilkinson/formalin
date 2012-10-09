@@ -1,8 +1,15 @@
 //- JavaScript source code
 
-//- main.js ~~
-//                                                      ~~ (c) SRW, 09 Aug 2012
+//- specialStains.js ~~
+//
+//  This template was pulled from the GitHub repository at
+//      https://github.com/benchill/hpath .
+//
+//  Its original author is Ben C. Hill, M.D.
+//
+//                                          ~~ last updated by SRW, 08 Oct 2012
 
+section('Special Stains');
 
 sentence({
     format: 'Stainable iron is {w x y z}.',
