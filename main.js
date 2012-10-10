@@ -150,7 +150,8 @@
         var y = [];
         $('.section').each(function (key, val) {
          // This function needs documentation.
-            var i, n, stack, temp, x;
+            var i, n, name, stack, temp, x;
+            name = $(this).data('name');
             stack = $(this).data('stack');
             n = stack.length;
             x = [];
@@ -160,7 +161,7 @@
                     x.push(temp);
                 }
             }
-            y[key] = trim(x.join(' '));
+            y[key] = name.toUpperCase()  + '\n' + trim(x.join(' '));
             return;
         });
         $('#report-output').val(trim(y.join('\n\n'))); // .focus();
@@ -239,7 +240,9 @@
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
             throw new TypeError('Section names must be strings.');
         }
+        console.log(x);
         return $('<div id="' + uuid() + '" class="section">' + x + '</div>')
+            .data('name', x)
             .data('stack', [])
             .insertBefore('#report-output');
     };
