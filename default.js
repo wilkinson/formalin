@@ -2,9 +2,9 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 08 Oct 2012
+//                                                  ~~ last updated 10 Oct 2012
 
-section('Hematopathology Report');
+section('Peripheral Smear');
 
 sentence({
     format: 'Red blood cells are {x y}.',
