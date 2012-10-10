@@ -23,7 +23,7 @@
 
     var $, binary, capitalize, categorical, comma, Cycle, cycle,
         generate_report, isFunction, off, ordinal, ply, section,
-        sentence, tap, trim, uuid;
+        sentence, slider, tap, trim, uuid;
 
  // Definitions
 
@@ -333,6 +333,11 @@
         return;
     };
 
+    slider = function () {
+     // This function needs documentation (and implementation ;-)
+        throw new Error('`slider` has not been implemented.');
+    };
+
     tap = function (x, f) {
      // This function needs documentation.
         return x.on('touchstart click', f);
@@ -396,6 +401,7 @@
     window.ordinal = ordinal;
     window.section = section;
     window.sentence = sentence;
+    window.slider = slider;
 
  // Invocations
 
