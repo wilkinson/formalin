@@ -5,6 +5,10 @@
  *                                                  ~~ last updated 11 Oct 2012
  */
 
+a {
+    color: inherit;
+}
+
 body {
     background-color: #CCCCCC;
     color: black;
