@@ -1,5 +1,11 @@
+#-  Search engine configuration file (?)
 
-# This file can be used to affect how search engines and other web site crawlers see your site.
-# For more information, please see http://www.w3.org/TR/html4/appendix/notes.html#h-B.4.1.1
-# WebMatrix 2.0
+#-  robots.txt ~~
+#
+#   This file can be used to affect how search engines and other web site
+#   crawlers see your site. For more information, please see
+#       http://www.w3.org/TR/html4/appendix/notes.html#h-B.4.1.1
+#
+#                                                       ~~ (c) SRW, 11 Oct 2012
 
+#-  vim:set syntax=robots:
