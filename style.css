@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 03 Aug 2012
- *                                                  ~~ last updated 08 Oct 2012
+ *                                                  ~~ last updated 11 Oct 2012
  */
 
 body {
@@ -75,9 +75,9 @@ input:checked + label {
 
 textarea {
  /*
-    The definitions here only affect #report right now, but the CSS Lint tool
-    recommends not to use id selectors if they can be avoided. See the site at
-    http://csslint.net for more information.
+    The definitions here only affect #report-output right now, but the CSS Lint
+    tool recommends not to use id selectors if they can be avoided. See the
+    site at http://csslint.net for more information.
  */
     font-family: Georgia,Serif;
     font-size: 12pt;
