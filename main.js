@@ -242,7 +242,6 @@
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
             throw new TypeError('Section names must be strings.');
         }
-        console.log(x);
         return $('<div id="' + uuid() + '" class="section">' + x + '</div>')
             .data('name', x)
             .data('stack', [])
