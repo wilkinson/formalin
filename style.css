@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 03 Aug 2012
- *                                                  ~~ last updated 11 Oct 2012
+ *                                                  ~~ last updated 23 Oct 2012
  */
 
 a {
@@ -39,6 +39,13 @@ input {
     Setting "display" to "block" puts each choice on its own line.
  */
     visibility: hidden;
+}
+
+input[type="text"] {
+ /*
+    This "unhides" the patient identifier input element.
+ */
+    visibility: visible;
 }
 
 input + label {
@@ -94,7 +101,9 @@ ul {
 }
 
 .fork-me {
- /* There is a much fancier version available at http://goo.gl/CSWv3. */
+ /*
+    There is a much fancier version available at http://goo.gl/CSWv3.
+ */
     border-bottom: none;
     left: -65px;
     height: 30px;
@@ -143,6 +152,13 @@ ul {
     font-size: 12pt;
     font-weight: normal;
     text-align: justify;
+}
+
+.skipline {
+ /*
+    This markup only applies to #case-id at the moment ...
+ */
+    margin-bottom: 1em;
 }
 
 /*- vim:set syntax=css: */

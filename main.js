@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 08 Oct 2012
+//                                                  ~~ last updated 23 Oct 2012
 
 (function () {
     'use strict';
@@ -147,7 +147,9 @@
      // This function joins the output from each section's own generating
      // function as text and puts that text into the designated textarea.
      // Because order is important, we can't use the `ply` function here.
-        var y = [];
+        var caseid, y;
+        caseid = 'CASE IDENTIFIER: ' + $('#case-id').val();
+        y = [];
         $('.section').each(function (key, val) {
          // This function needs documentation.
             var i, n, name, stack, temp, x;
@@ -164,7 +166,7 @@
             y[key] = name.toUpperCase()  + '\n' + trim(x.join(' '));
             return;
         });
-        $('#report-output').val(trim(y.join('\n\n'))); // .focus();
+        $('#report-output').val(trim(caseid + '\n\n' + y.join('\n\n'))); // .focus();
         return;
     };
 
@@ -415,6 +417,7 @@
                 'https://raw.github.com/wilkinson/hpath/templates/default.js');
             return;
         }
+        $('#case-id').blur(generate_report);
         (function script_loader(args) {
          // This function needs documentation.
             $.getScript(args.shift()).done(function (script, textStatus) {
