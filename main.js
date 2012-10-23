@@ -425,6 +425,16 @@
             }
             return;
         });
+        $('#to-top').click(function () {
+         // This function needs documentation.
+            $('html, body').animate({
+                scrollTop: 0
+            }, {
+                duration: 500,
+                queue: false
+            });
+            return;
+        });
         (function script_loader(args) {
          // This function needs documentation.
             $.getScript(args.shift()).done(function (script, textStatus) {
