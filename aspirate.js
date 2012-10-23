@@ -7,7 +7,7 @@
 //
 //  Its original author is Ben C. Hill, M.D.
 //
-//                                          ~~ last updated by SRW, 08 Oct 2012
+//                                          ~~ last updated by SRW, 23 Oct 2012
 
 section('Aspirate');
 
@@ -36,12 +36,20 @@ sentence({
     y: ordinal({
         long_name:  'blasts',
         short_name: 'blasts',
-        states:     [off, 'a mildly increased number of','a significantly increased number of']
+        states: [
+            off,
+            'a mildly increased number of',
+            'a significantly increased number of'
+        ]
     }),
     z: ordinal({
         long_name:  'plasma cells',
         short_name: 'plasma cells',
-        states:      [off, 'a mildly increased number of','a significantly increased number of']
+        states: [
+            off,
+            'a mildly increased number of',
+            'a significantly increased number of'
+        ]
     })
 });
 
@@ -75,50 +83,60 @@ sentence({
         long_name:  'evident',
         short_name: 'evident',
         states:     [off, '']
-    }),  
+    }),
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off, 'with','with sequential', 'with a normal progressive pattern of']
+        states: [
+            off,
+            'with',
+            'with sequential',
+            'with a normal progressive pattern of'
+        ]
     })
 });
 
 sentence({
-    format: 'Erythropoiesis is {w x y} {z}.',
+    format: 'Erythropoiesis is {w x y} {z a}.',
     w: ordinal({
         long_name:  'evident',
         short_name: 'evident',
         states:     [off, '']
-    }),  
+    }),
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off, 'with','with sequential','with a normal progressive pattern of']
+        states: [
+            off,
+            'with',
+            'with sequential',
+            'with a normal progressive pattern of'
+        ]
     }),
-z: ordinal({
+    a: ordinal({
         long_name:  'megaloblastic changes',
         short_name: 'megaloblastic',
-        states:     [off, 'with', 'with mild', 'with marked']
+        states: [off, 'with', 'with mild', 'with marked']
     })
 });
 
@@ -128,45 +146,50 @@ sentence({
         long_name:  'evident',
         short_name: 'evident',
         states:     [off, '']
-    }),  
+    }),
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off, 'with','with sequential', 'with a normal progressive pattern of']
+        states: [
+            off,
+            'with',
+            'with sequential',
+            'with a normal progressive pattern of'
+        ]
     })
 });
 
 sentence({
-    format: 'Megakarocytes are {x y} with {z a b}.',
+    format: 'Megakarocytes are {x y y2} with {z a b c}.',
     x: ordinal({
         long_name:  'increased in number',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased in number',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
-        y: ordinal({
+    y2: ordinal({
         long_name:  'adequate',
         short_name: 'adequate',
-        states:     [off,'']
+        states:     [off, '']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off,'']
+        states:     [off, '']
     }),
     a: ordinal({
         long_name:  'unremarkable morphology',
@@ -176,12 +199,12 @@ sentence({
     b: ordinal({
         long_name:  'hypolobated forms',
         short_name: 'hypolobated',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
     }),
-    b: ordinal({
+    c: ordinal({
         long_name:  'immature forms',
         short_name: 'immature',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
     })
 });
 
@@ -190,7 +213,7 @@ sentence({
     x: ordinal({
         long_name:  'plasma cells',
         short_name: 'plasma cells',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
     }),
     a: ordinal({
         long_name:  'unremarkable morphology',
@@ -200,7 +223,7 @@ sentence({
     b: ordinal({
         long_name:  'atypical features',
         short_name: 'atypical features',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
     })
 });
 

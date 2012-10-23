@@ -7,7 +7,7 @@
 //
 //  Its original author is Ben C. Hill, M.D.
 //
-//                                          ~~ last updated by SRW, 08 Oct 2012
+//                                          ~~ last updated by SRW, 23 Oct 2012
 
 section('Special Stains');
 
@@ -17,7 +17,7 @@ sentence({
         long_name:  'absent',
         short_name: 'absent',
         states:     [off, '', 'virtually']
-    }),       
+    }),
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',

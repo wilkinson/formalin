@@ -7,7 +7,7 @@
 //
 //  Its original author is Ben C. Hill, M.D.
 //
-//                                          ~~ last updated by SRW, 08 Oct 2012
+//                                          ~~ last updated by SRW, 23 Oct 2012
 
 section('Bone Marrow');
 
@@ -17,7 +17,7 @@ sentence({
         long_name:  'decalcification',
         short_name: 'decalcification',
         states:     [off, '']
-    })    
+    })
 });
 
 sentence({
@@ -30,19 +30,18 @@ sentence({
     v: ordinal({
         long_name:  'left',
         short_name: 'left',
-        states:     [off, '', 'slightly','markedly']
+        states:     [off, '', 'slightly', 'markedly']
     }),
     w: ordinal({
         long_name:  '',
         short_name: 'X',
-        states:     [off, '0','1','2','3','4','5']
+        states:     [off, '0', '1', '2', '3', '4', '5']
     }),
     x: ordinal({
         long_name:  '',
         short_name: 'X',
-        states:    [off, '0','1','2','3','4','5','6','7','8','9']
-    })     
-    
+        states:    [off, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    })
 });
 
 sentence({
@@ -60,7 +59,8 @@ sentence({
 });
 
 sentence({
-    format: 'The biopsy shows {u v w a} marrow ({b} {c} % {d} {e} {f}) {x y z}.',
+    format: 'The biopsy shows {u v w a} marrow ' +
+                '({b} {c} % {d} {e} {f}) {x y z}.',
     u: ordinal({
         long_name:  'normocellular',
         short_name: 'normocellular',
@@ -69,43 +69,43 @@ sentence({
     v: ordinal({
         long_name:  'hypocellular',
         short_name: 'hypocellular',
-        states:     [off, '', 'slightly','markedly']
+        states:     [off, '', 'slightly', 'markedly']
     }),
     w: ordinal({
         long_name:  'hypercellular',
         short_name: 'hypercellular',
-        states:     [off, '','slightly','markedly']
+        states:     [off, '', 'slightly', 'markedly']
     }),
     a: ordinal({
         long_name:  'variably cellular',
         short_name: 'variably cellular',
-        states:     [off, '','slightly','markedly']
+        states:     [off, '', 'slightly', 'markedly']
     }),
     b: ordinal({
         long_name:  '',
         short_name: 'X',
-        states:    [off,'1','2','3','4','5','6','7','8','9']
-    }),  
+        states:     [off, '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    }),
     c: ordinal({
         long_name:  '',
         short_name: 'X',
-        states:    [off, '0','5']
-    }), 
+        states:     [off, '0', '5']
+    }),
     d: ordinal({
         long_name:  'to',
         short_name: 'to',
-        states:    [off,'']
-    }), 
+        states:     [off, '']
+    }),
     e: ordinal({
         long_name:  '',
         short_name: 'X',
-        states:    [off,'1','2','3','4','5','6','7','8','9']
-    }),   
+        states:     [off, '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    }),
     f: ordinal({
         long_name:  '%',
         short_name: 'X',
-        states:    [off, '0','5']
-    }),                
+        states:     [off, '0', '5']
+    }),
     x: ordinal({
         long_name:  ' with trilineage hematopoeisis',
         short_name: 'TLH',
@@ -114,12 +114,22 @@ sentence({
     y: ordinal({
         long_name:  'blasts',
         short_name: 'blasts',
-        states:     [off, ' with a mildly increased number of',' with a markedly increased number of',' consisting predominantly of']
+        states: [
+            off,
+            'with a mildly increased number of',
+            'with a markedly increased number of',
+            'consisting predominantly of'
+        ]
     }),
     z: ordinal({
         long_name:  'plasma cells',
         short_name: 'plasma cells',
-        states:      [off, ' a mildly increased number of',' a significantly increased number of',' consisting predominantly of']
+        states: [
+            off,
+            'a mildly increased number of',
+            'a significantly increased number of',
+            'consisting predominantly of'
+        ]
     })
 });
 
@@ -153,47 +163,57 @@ sentence({
         long_name:  'evident',
         short_name: 'evident',
         states:     [off, '']
-    }),  
+    }),
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off, 'with','with sequential', 'with a normal progressive pattern of']
+        states: [
+            off,
+            'with',
+            'with sequential',
+            'with a normal progressive pattern of'
+        ]
     })
 });
 
 sentence({
-    format: 'Erythropoiesis is {w x y} {z}.',
+    format: 'Erythropoiesis is {w x y} {z a}.',
     w: ordinal({
         long_name:  'evident',
         short_name: 'evident',
         states:     [off, '']
-    }),  
+    }),
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off, 'with','with sequential','with a normal progressive pattern of']
+        states: [
+            off,
+            'with',
+            'with sequential',
+            'with a normal progressive pattern of'
+        ]
     }),
-z: ordinal({
+    a: ordinal({
         long_name:  'megaloblastic changes',
         short_name: 'megaloblastic',
         states:     [off, 'with', 'with mild', 'with marked']
@@ -206,50 +226,55 @@ sentence({
         long_name:  'evident',
         short_name: 'evident',
         states:     [off, '']
-    }),  
+    }),
     x: ordinal({
         long_name:  'increased',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off, 'with','with sequential', 'with a normal progressive pattern of']
+        states: [
+            off,
+            'with',
+            'with sequential',
+            'with a normal progressive pattern of'
+        ]
     }),
     a: ordinal({
         long_name:  'left shift',
         short_name: 'left shift',
-        states:     [off, 'with a mild','with a moderate', 'with a marked']
+        states:     [off, 'with a mild', 'with a moderate', 'with a marked']
     })
 });
 
 sentence({
-    format: 'Megakarocytes are {x y} with {z a b}.',
+    format: 'Megakarocytes are {x y y2} with {z a b c}.',
     x: ordinal({
         long_name:  'increased in number',
         short_name: 'increased',
-        states:     [off, '','mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased in number',
         short_name: 'decreased',
-        states:     [off,'', 'mildly', 'markedly']
+        states:     [off, '', 'mildly', 'markedly']
     }),
-        y: ordinal({
+    y2: ordinal({
         long_name:  'adequate',
         short_name: 'adequate',
-        states:     [off,'']
+        states:     [off, '']
     }),
     z: ordinal({
         long_name:  'maturation',
         short_name: 'maturation',
-        states:     [off,'']
+        states:     [off, '']
     }),
     a: ordinal({
         long_name:  'unremarkable morphology',
@@ -259,12 +284,12 @@ sentence({
     b: ordinal({
         long_name:  'hypolobated forms',
         short_name: 'hypolobated',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
     }),
-    b: ordinal({
+    c: ordinal({
         long_name:  'dysplastic forms',
         short_name: 'dysplastic',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
     })
 });
 
@@ -273,7 +298,7 @@ sentence({
     x: ordinal({
         long_name:  'plasma cells',
         short_name: 'plasma cells',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
     }),
     a: ordinal({
         long_name:  'unremarkable morphology',
@@ -283,12 +308,14 @@ sentence({
     b: ordinal({
         long_name:  'atypical features',
         short_name: 'atypical features',
-        states:     [off, 'rare', 'few', 'scattered', 'occasional','several']
-    }),    
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
+    }),
     c: ordinal({
         long_name:  'plasma cell aggregates',
         short_name: 'aggregates',
-        states:     [off,'no', 'rare', 'few', 'scattered', 'occasional','several']
+        states: [
+            off, 'no', 'rare', 'few', 'scattered', 'occasional', 'several'
+        ]
     })
 });
 
@@ -315,7 +342,9 @@ sentence({
     x: ordinal({
         long_name:  'lymphoid aggregates',
         short_name: 'lymphoid aggregates',
-        states:     [off, 'No','rare', 'a few','scattered', 'occasional','several']
+        states: [
+            off, 'no', 'rare', 'a few', 'scattered', 'occasional', 'several'
+        ]
     })
 });
 
