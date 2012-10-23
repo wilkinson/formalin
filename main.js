@@ -417,7 +417,14 @@
                 'https://raw.github.com/wilkinson/hpath/templates/default.js');
             return;
         }
-        $('#case-id').blur(generate_report);
+        $('#case-id').blur(generate_report).keydown(function (evt) {
+         // This function needs documentation.
+            if (evt.which === 13) {
+                evt.preventDefault();
+                $(this).blur();
+            }
+            return;
+        });
         (function script_loader(args) {
          // This function needs documentation.
             $.getScript(args.shift()).done(function (script, textStatus) {
