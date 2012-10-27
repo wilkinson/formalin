@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 03 Aug 2012
- *                                                  ~~ last updated 23 Oct 2012
+ *                                                  ~~ last updated 26 Oct 2012
  */
 
 a {
@@ -169,7 +169,7 @@ ul {
  */
     font-size: 12pt;
     font-weight: normal;
-    text-align: justify;
+    text-align: left;
 }
 
 .skipline {

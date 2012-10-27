@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 23 Oct 2012
+//                                                  ~~ last updated 26 Oct 2012
 
 (function () {
     'use strict';
@@ -166,7 +166,7 @@
             y[key] = name.toUpperCase()  + '\n' + trim(x.join(' '));
             return;
         });
-        $('#report-output').val(trim(caseid + '\n\n' + y.join('\n\n'))); // .focus();
+        $('#report-output').val(trim(caseid + '\n\n' + y.join('\n\n')));
         return;
     };
 
@@ -181,6 +181,10 @@
         return;
     };
 
+    off.toString = function () {
+        return '';
+    };
+
     ordinal = function (obj) {
      // This function needs documentation.
         if ((obj instanceof Object) === false) {
@@ -191,9 +195,12 @@
             id: key,
             click: function () {
              // This function needs documentation.
-                if ($(this).data('cycle-instance').next().current > 1) {
+                var x = $(this).data('cycle-instance');
+                if (x.next().current > 1) {
                     this.checked = true;
                 }
+                $('label[for="' + this.id + '"]')
+                    .text(x.states[x.current] + ' ' + obj.short_name);
                 generate_report();
                 return;
             },
