@@ -1,6 +1,9 @@
 //- JavaScript source code
 
 //- main.js ~~
+//
+//  NOTE: I need to add Google Chrome Frame back in ...
+//
 //                                                      ~~ (c) SRW, 03 Aug 2012
 //                                                  ~~ last updated 29 Oct 2012
 
