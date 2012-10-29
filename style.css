@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 03 Aug 2012
- *                                                  ~~ last updated 26 Oct 2012
+ *                                                  ~~ last updated 29 Oct 2012
  */
 
 a {
@@ -47,9 +47,9 @@ input {
     visibility: hidden;
 }
 
-input[type="text"] {
+input[type="button"],input[type="text"] {
  /*
-    This "unhides" the patient identifier input element.
+    This "unhides" the "Case Identifier" and "Generate Report" elements.
  */
     visibility: visible;
 }
@@ -155,9 +155,22 @@ ul {
     background: blue;
 }
 
-.section {
+.popup {
  /*
-    This markup corresponds to the `section` command in the DSL.
+    This class is used for the lightbox effect.
+ */
+    display: none;
+    height: 62%;
+    left: 19%;
+    padding: 1ex;
+    position: fixed;
+    top: 19%;
+    width: 62%;
+}
+
+.section a {
+ /*
+    Links within sections will be emphasized with big, bold text.
  */
     font-size: 18pt;
     font-weight: bold;

@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 26 Oct 2012
+//                                                  ~~ last updated 29 Oct 2012
 
 (function () {
     'use strict';
@@ -40,8 +40,7 @@
             id: key,
             click: function () {
              // This function needs documentation.
-                var x = $(this).data('cycle-instance');
-                x.next();
+                var x = $(this).data('cycle-instance').next();
                 this.checked = (x.current > 0);
                 generate_report();
                 return;
@@ -147,9 +146,11 @@
      // This function joins the output from each section's own generating
      // function as text and puts that text into the designated textarea.
      // Because order is important, we can't use the `ply` function here.
-        var caseid, y;
-        caseid = 'CASE IDENTIFIER: ' + $('#case-id').val();
-        y = [];
+        if ($('#report-output:visible').length === 0) {
+         // If the textarea is hidden, we don't need to generate the report.
+            return;
+        }
+        var y = ['CASE IDENTIFIER: ' + $('#case-id').val()];
         $('.section').each(function (key, val) {
          // This function needs documentation.
             var i, n, name, stack, temp, x;
@@ -163,10 +164,10 @@
                     x.push(temp);
                 }
             }
-            y[key] = name.toUpperCase()  + '\n' + trim(x.join(' '));
+            y[key + 1] = name.toUpperCase()  + '\n' + trim(x.join(' '));
             return;
         });
-        $('#report-output').val(trim(caseid + '\n\n' + y.join('\n\n')));
+        $('#report-output').val(trim(y.join('\n\n')));
         return;
     };
 
@@ -195,8 +196,8 @@
             id: key,
             click: function () {
              // This function needs documentation.
-                var x = $(this).data('cycle-instance');
-                if (x.next().current > 1) {
+                var x = $(this).data('cycle-instance').next();
+                if (x.current > 1) {
                     this.checked = true;
                 }
                 $('label[for="' + this.id + '"]')
@@ -249,7 +250,9 @@
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
             throw new TypeError('Section names must be strings.');
         }
-        return $('<div id="' + uuid() + '" class="section">' + x + '</div>')
+        return $('<div id="' + uuid() + '" class="section"></div>')
+            .html('<a href="' + $('script')[0].src + '" target="_blank">' +
+                x + '</a>')
             .data('name', x)
             .data('stack', [])
             .insertBefore('#report-output');
@@ -423,6 +426,23 @@
                 'https://raw.github.com/wilkinson/hpath/templates/default.js');
             return;
         }
+        $.ajaxSetup({cache: true});
+        $(document.body).keyup(function (evt) {
+         // This function adds hotkeys so that the user doesn't have to scroll
+         // all the way to the top and click the button in order to inspect a
+         // freshly generated report. I will add support for touch gestures in
+         // the near future when I can obtain a tablet to test with.
+            if ((evt.which === 13) && ($('textarea:visible').length === 0)) {
+             // The user pressed "Enter".
+                evt.preventDefault();
+                $('#generate-report').click();
+            } else if (evt.which === 27) {
+             // The user pressed "Escape".
+                evt.preventDefault();
+                $('#report-output').blur();
+            }
+            return;
+        });
         $('#case-id').blur(generate_report).keydown(function (evt) {
          // This function needs documentation.
             if (evt.which === 13) {
@@ -431,7 +451,18 @@
             }
             return;
         });
-        $('#to-top').click(function () {
+        $('#generate-report').on('touchstart click', function () {
+         // This function needs documentation.
+            $('#report-output').fadeIn('fast').focus();
+            generate_report();
+            return;
+        });
+        $('#report-output').blur(function () {
+         // This function needs documentation.
+            $(this).fadeOut('fast');
+            return;
+        });
+        $('#to-top').on('touchstart click', function () {
          // This function needs documentation.
             $('html, body').animate({
                 scrollTop: 0
@@ -446,8 +477,10 @@
             $.getScript(args.shift()).done(function (script, textStatus) {
              // This function needs documentation.
                 if (args.length === 0) {
-                 // Finally, when all scripts have loaded, we generate the
-                 // report for the first time :-)
+                 // Finally, when all scripts have loaded, we assume that all
+                 // sections have been created and insert a horizontal line
+                 // before each section before generating the initial report.
+                    $('.section').before('<hr/>');
                     generate_report();
                 } else {
                     script_loader(args);
