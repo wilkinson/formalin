@@ -1,6 +1,10 @@
 /*- CSS style sheet */
 
 /*- style.css ~~
+ *
+ *  NOTE: I am still working to integrate :before and :after pseudo-selectors
+ *  that show the Unicode alert symbol, U+26A0.
+ *
  *                                                      ~~ (c) SRW, 03 Aug 2012
  *                                                  ~~ last updated 29 Oct 2012
  */
@@ -153,6 +157,14 @@ ul {
 
 .fork-me span:hover {
     background: blue;
+}
+
+input:required:invalid {
+ /*
+    This class applies to invalid input elements. See http://goo.gl/Mva6q.
+ */
+    background-color: #FFEBEB;
+    border-color: red;
 }
 
 .popup {
