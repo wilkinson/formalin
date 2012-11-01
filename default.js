@@ -2,7 +2,7 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 10 Oct 2012
+//                                                  ~~ last updated 01 Nov 2012
 
 section('Peripheral Smear');
 
@@ -306,7 +306,7 @@ sentence({
 });
 
 sentence({
-    format: 'Monocytes are {m n} with {x}.',
+    format: 'Monocytes {x} are {m n}.',
     m: binary({
         long_name:  'present but not increased',
         short_name: 'present'
@@ -319,8 +319,8 @@ sentence({
         ]
     }),
     x: binary({
-        long_name:  'mature morphology',
-        short_name: 'mature'
+        long_name:  'with mature morphology',
+        short_name: 'with mature morphology'
     })
 });
 
