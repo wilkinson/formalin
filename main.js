@@ -5,7 +5,7 @@
 //  NOTE: I need to add Google Chrome Frame back in ...
 //
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 01 Nov 2012
+//                                                  ~~ last updated 07 Dec 2012
 
 (function () {
     'use strict';
@@ -425,8 +425,8 @@
          // If no template has been specified, grab "default.js" from the
          // "templates" branch as a default.
             location.replace(location.href +
-                ((location.href.slice(-1) === '?') ? '' : '?') +
-                'https://raw.github.com/wilkinson/hpath/templates/default.js');
+                    ((location.href.slice(-1) === '?') ? '' : '?') +
+                    'https://raw.github.com/benchill/hpath/master/default.js');
             return;
         }
         $.ajaxSetup({cache: true});
