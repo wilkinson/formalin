@@ -5,7 +5,7 @@
 //  NOTE: I need to add Google Chrome Frame back in ...
 //
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 29 Oct 2012
+//                                                  ~~ last updated 01 Nov 2012
 
 (function () {
     'use strict';
@@ -484,6 +484,7 @@
                  // sections have been created and insert a horizontal line
                  // before each section before generating the initial report.
                     $('.section').before('<hr/>');
+                    $('#report-output').blur();
                     generate_report();
                 } else {
                     script_loader(args);
