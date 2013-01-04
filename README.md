@@ -15,3 +15,7 @@ and use a domain-specific language (DSL) based on JavaScript Object Notation
 are available in the
 [templates](https://github.com/wilkinson/hpath/tree/templates) branch.
 
+Various project statistics are available on
+[GitHub](https://github.com/wilkinson/hpath/graphs) and
+[Ohloh](https://www.ohloh.net/p/hpath-report-generator/), too.
+
