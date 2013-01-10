@@ -5,7 +5,7 @@
 //  NOTE: I need to add Google Chrome Frame back in ...
 //
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 07 Dec 2012
+//                                                  ~~ last updated 10 Jan 2013
 
 (function () {
     'use strict';
@@ -340,7 +340,7 @@
                 });
                 return;
             });
-            return (checked) ? capitalize(y.join('')) : '';
+            return (checked === true) ? capitalize(y.join('')) : '';
         });
 
         parent_section.data('stack', stack);
