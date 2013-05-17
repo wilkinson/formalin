@@ -426,10 +426,10 @@
          // "templates" branch as a default.
             location.replace(location.href +
                     ((location.href.slice(-1) === '?') ? '' : '?') +
-                    '//wilkinson.github.io/hpath/templates/default.js');
+                    'http://wilkinson.github.io/hpath/templates/default.js');
             return;
         }
-        $.ajaxSetup({cache: true});
+        $.ajaxSetup({cache: false});
         $(document.body).keyup(function (evt) {
          // This function adds hotkeys so that the user doesn't have to scroll
          // all the way to the top and click the button in order to inspect a
