@@ -426,7 +426,7 @@
          // "templates" branch as a default.
             location.replace(location.href +
                     ((location.href.slice(-1) === '?') ? '' : '?') +
-                    'https://benchill.github.io/hpath/plugins/default.js');
+                    'http://benchill.github.io/hpath/plugins/default.js');
             return;
         }
         $.ajaxSetup({cache: true});
