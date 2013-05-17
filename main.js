@@ -5,7 +5,7 @@
 //  NOTE: I need to add Google Chrome Frame back in ...
 //
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 10 Jan 2013
+//                                                  ~~ last updated 17 May 2013
 
 (function () {
     'use strict';
@@ -426,7 +426,7 @@
          // "templates" branch as a default.
             location.replace(location.href +
                     ((location.href.slice(-1) === '?') ? '' : '?') +
-                    'https://raw.github.com/benchill/hpath/master/default.js');
+                    'https://benchill.github.io/hpath/plugins/default.js');
             return;
         }
         $.ajaxSetup({cache: true});
