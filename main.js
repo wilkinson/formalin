@@ -253,11 +253,8 @@
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
             throw new TypeError('Section names must be strings.');
         }
-        var scripts, url;
-        scripts = $('script');
-        url = (scripts.length === 2) ? '#' : scripts[0].src;
         return $('<div id="' + uuid() + '" class="section"></div>')
-            .html('<a href="' + url + '" target="_blank">' +
+            .html('<a href="' + $('script')[0].src + '" target="_blank">' +
                 x + '</a>')
             .data('name', x)
             .data('stack', [])
@@ -432,6 +429,7 @@
                     'http://wilkinson.github.io/hpath/templates/default.js');
             return;
         }
+        var original_first_script_url = $('script')[0].src;
         $.ajaxSetup({cache: false});
         $(document.body).keyup(function (evt) {
          // This function adds hotkeys so that the user doesn't have to scroll
@@ -478,6 +476,7 @@
             });
             return;
         });
+
         (function script_loader(args) {
          // This function needs some work, because jQuery uses AJAX instead of
          // "script tag loading" to load scripts from the same domain as the
@@ -489,10 +488,9 @@
              // This function needs documentation.
                 $('div.section a').each(function (index, link) {
                  // This function needs documentation.
-                    if (link.href === '#') {
+                    if (link.href === original_first_script_url) {
                         link.href = url;
                     }
-                    console.log(index, link);
                     return;
                 });
                 if (args.length === 0) {
