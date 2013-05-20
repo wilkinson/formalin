@@ -253,8 +253,11 @@
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
             throw new TypeError('Section names must be strings.');
         }
+        var scripts, url;
+        scripts = $('script');
+        url = (scripts.length === 2) ? '#' : scripts[0].src;
         return $('<div id="' + uuid() + '" class="section"></div>')
-            .html('<a href="' + $('script')[0].src + '" target="_blank">' +
+            .html('<a href="' + url + '" target="_blank">' +
                 x + '</a>')
             .data('name', x)
             .data('stack', [])
@@ -486,6 +489,9 @@
              // This function needs documentation.
                 $('div.section a').each(function (index, link) {
                  // This function needs documentation.
+                    if (link.href === '#') {
+                        link.href = url;
+                    }
                     console.log(index, link);
                     return;
                 });
