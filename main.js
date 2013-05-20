@@ -426,7 +426,7 @@
          // "templates" branch as a default.
             location.replace(location.href +
                     ((location.href.slice(-1) === '?') ? '' : '?') +
-                    'http://wilkinson.github.io/hpath/templates/default.js');
+                    'templates/default.js');
             return;
         }
         var original_first_script_url = $('script')[0].src;
