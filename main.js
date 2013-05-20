@@ -476,13 +476,8 @@
             });
             return;
         });
-
         (function script_loader(args) {
-         // This function needs some work, because jQuery uses AJAX instead of
-         // "script tag loading" to load scripts from the same domain as the
-         // invoking page, and consequently, the section links that *should*
-         // point to the templates themselves aren't working correctly at the
-         // moment. I will fix this soon.
+         // This function needs documentation.
             var url = args.shift();
             $.getScript(url).done(function (script, textStatus) {
              // This function needs documentation.
