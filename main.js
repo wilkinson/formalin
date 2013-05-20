@@ -486,7 +486,7 @@
              // This function needs documentation.
                 $('div.section a').each(function (index, link) {
                  // This function needs documentation.
-                    console.log(key, val);
+                    console.log(index, link);
                     return;
                 });
                 if (args.length === 0) {
