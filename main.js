@@ -5,7 +5,7 @@
 //  NOTE: I need to add Google Chrome Frame back in ...
 //
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 17 May 2013
+//                                                  ~~ last updated 20 May 2013
 
 (function () {
     'use strict';
@@ -476,9 +476,19 @@
             return;
         });
         (function script_loader(args) {
-         // This function needs documentation.
-            $.getScript(args.shift()).done(function (script, textStatus) {
+         // This function needs some work, because jQuery uses AJAX instead of
+         // "script tag loading" to load scripts from the same domain as the
+         // invoking page, and consequently, the section links that *should*
+         // point to the templates themselves aren't working correctly at the
+         // moment. I will fix this soon.
+            var url = args.shift();
+            $.getScript(url).done(function (script, textStatus) {
              // This function needs documentation.
+                $('div.section a').each(function (index, link) {
+                 // This function needs documentation.
+                    console.log(key, val);
+                    return;
+                });
                 if (args.length === 0) {
                  // Finally, when all scripts have loaded, we assume that all
                  // sections have been created and insert a horizontal line
