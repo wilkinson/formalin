@@ -424,7 +424,6 @@
         if (location.search.length === 0) {
          // If no template has been specified, load "default.js" from the
          // "templates" directory.
-            alert('Test');
             location.replace(location.href +
                     ((location.href.slice(-1) === '?') ? '' : '?') +
                     'templates/default.js');
