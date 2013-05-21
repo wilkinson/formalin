@@ -496,7 +496,7 @@
                     $('#report-output').blur();
                     generate_report();
                 } else {
-                    window.setTimeout(script_loader, 0, args);
+                    script_loader(args);
                 }
                 return;
             }).fail(function (jqxhr, settings, exception) {
