@@ -488,12 +488,12 @@
                     }
                     return;
                 });
+                $('#report-output').blur();
                 if (args.length === 0) {
                  // Finally, when all scripts have loaded, we assume that all
                  // sections have been created and insert a horizontal line
                  // before each section before generating the initial report.
                     $('.section').before('<hr/>');
-                    $('#report-output').blur();
                     generate_report();
                 } else {
                     window.setTimeout(script_loader, 0, args);
