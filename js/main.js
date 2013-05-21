@@ -422,8 +422,8 @@
     $(document).ready(function () {
      // This function runs when jQuery decides the page is ready.
         if (location.search.length === 0) {
-         // If no template has been specified, grab "default.js" from the
-         // "templates" branch as a default.
+         // If no template has been specified, load "default.js" from the
+         // "templates" directory.
             location.replace(location.href +
                     ((location.href.slice(-1) === '?') ? '' : '?') +
                     'templates/default.js');
