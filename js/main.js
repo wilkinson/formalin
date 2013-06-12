@@ -5,7 +5,7 @@
 //  NOTE: I need to add Google Chrome Frame back in ...
 //
 //                                                      ~~ (c) SRW, 03 Aug 2012
-//                                                  ~~ last updated 20 May 2013
+//                                                  ~~ last updated 12 Jun 2013
 
 (function () {
     'use strict';
@@ -25,7 +25,7 @@
  // Declarations
 
     var $, binary, capitalize, categorical, comma, Cycle, cycle,
-        generate_report, isFunction, off, ordinal, ply, section,
+        generate_report, isFunction, off, ordinal, ply, range, section,
         sentence, slider, tap, trim, uuid;
 
  // Definitions
@@ -248,6 +248,42 @@
         };
     };
 
+    range = function (obj) {
+     // This function needs documentation.
+        if ((obj instanceof Object) === false) {
+            throw new TypeError('Argument must be an object.');
+        }
+        if ((obj.hasOwnProperty('max')) === false) {
+            throw new Error('`range` argument needs a `max` property.');
+        }
+        if ((obj.hasOwnProperty('min')) === false) {
+            throw new Error('`range` argument needs a `min` property.');
+        }
+        if ((obj.hasOwnProperty('step')) === false) {
+            throw new Error('`range` argument needs a `step` property.');
+        }
+        var key, val;
+        key = uuid();
+        val = obj.hasOwnProperty('value') ? obj.value : 50;
+        return $('<input>', {
+            id: key,
+            change: function () {
+             // This function needs documentation.
+                var x = $(this).data('cycle-instance', this.value);
+                this.checked = true;
+                $('label[for=' + key + ']').html(this.value);
+                generate_report();
+                return;
+            },
+            max: obj.max,
+            min: obj.min,
+            step: obj.step,
+            type: 'range',
+            value: val
+        }).data('cycle-instance', val)
+            .after('<label for="' + key + '">' + val + '</label>');
+    };
+
     section = function (x) {
      // This function needs documentation.
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
@@ -413,6 +449,7 @@
     window.categorical = categorical;
     window.off = off;
     window.ordinal = ordinal;
+    window.range = range;
     window.section = section;
     window.sentence = sentence;
     window.slider = slider;

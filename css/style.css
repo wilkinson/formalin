@@ -6,7 +6,7 @@
  *  that show the Unicode alert symbol, U+26A0.
  *
  *                                                      ~~ (c) SRW, 03 Aug 2012
- *                                                  ~~ last updated 07 Dec 2012
+ *                                                  ~~ last updated 12 Jun 2013
  */
 
 a {
@@ -51,7 +51,7 @@ input {
     visibility: hidden;
 }
 
-input[type="button"],input[type="text"] {
+input[type="button"],input[type="range"],input[type="text"] {
  /*
     This "unhides" the "Case Identifier" and "Generate Report" elements.
  */
@@ -83,7 +83,7 @@ input + label {
 
 }
 
-input:checked + label {
+input:checked + label, input[type="range"] + label {
  /*
     When the input is "checked", such as for a checkbox or a radio button, the
     label's text should become black and the background should become white. At
