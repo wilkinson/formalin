@@ -1,0 +1,31 @@
+/*- CSS stylesheet */
+
+/*- style.css ~~
+ *                                                      ~~ (c) SRW, 25 Jun 2013
+ *                                                  ~~ last updated 25 Jun 2013
+ */
+
+@media all {
+    body {
+     /* This extends the container to the bottom of the topbar. */
+        padding-top: 60px;
+    }
+    noscript {
+        color: red;
+        font-size: 200%;
+    }
+    input:invalid {
+        background-color: pink;
+    }
+    .centered {
+        text-align: center;
+    }
+}
+
+@media (max-width: 980px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+/*- vim:set syntax=css: */
