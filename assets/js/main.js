@@ -17,10 +17,10 @@
         addClass, alert, append, appendTo, apply, attr, binary, by,
         categorical, charAt, concat, done, fail, format, getScript, hasClass,
         hasOwnProperty, href, html, indexOf, join, jQuery, length, long_name,
-        match, off, on, ordinal, prototype, push, random, range, ready,
+        match, off, on, ordinal, prototype, push, queue, random, range, ready,
         removeClass, replace, search, section, sections, sentence, sentences,
-        shift, short_name, slice, split, states, test, text, title,
-        toggleClass, toString, toUpperCase, trim, url, val
+        setTimeout, shift, short_name, slice, split, states, template, test,
+        text, title, toggleClass, toString, toUpperCase, trim, url, val
     */
 
  // Prerequisites
@@ -33,8 +33,8 @@
  // Declarations
 
     var $, binary, capitalize, categorical, chosen, comma, generate_report,
-        load_templates, off, ordinal, ply, range, section, sentence, templates,
-        uuid;
+        load_templates, off, ordinal, ply, range, section, sentence, template,
+        templates, uuid;
 
  // Definitions
 
@@ -135,6 +135,7 @@
 
     load_templates = function () {
      // This function needs documentation.
+        /*jslint unparam: true */
         if (location.search.length === 0) {
          // If no template has been specified, load "default.js" from the
          // "templates" directory.
@@ -143,33 +144,11 @@
                     'templates/default.js');
             return;
         }
-        (function load_scripts(args) {
+        ply(location.search.slice(1).split('&')).by(function (i, url) {
          // This function needs documentation.
-            /*jslint unparam: true */
-            var url, y;
-            url = args.shift();
-            y = {
-                sections: [],
-                toString: function () {
-                 // This function needs documentation.
-                    return y.sections.join('<br>');
-                },
-                url: url
-            };
-            templates.push(y);
-            $.getScript(url).done(function (script, textStatus) {
-             // This function needs documentation.
-                if (args.length !== 0) {
-                    load_scripts(args);
-                }
-                return;
-            }).fail(function (jqxhr, settings, exception) {
-             // This function needs documentation.
-                window.alert('Error: ' + exception);
-                return;
-            });
+            template(url);
             return;
-        }(location.search.slice(1).split('&')));
+        });
         return;
     };
 
@@ -341,6 +320,52 @@
         return;
     };
 
+    template = function (x) {
+     // This function needs documentation.
+        if (typeof x !== 'string') {
+            throw new TypeError('Input argument must be a string.');
+        }
+        if (template.hasOwnProperty('queue') === false) {
+            template.queue = [];
+        }
+        if (template.hasOwnProperty('ready') === false) {
+            template.ready = true;
+        }
+        var load_next, url, y;
+        load_next = function () {
+         // This function needs documentation.
+            /*jslint unparam: true */
+            if ((template.ready === true) && (template.queue.length > 0)) {
+                template.ready = false;
+                url = template.queue.shift();
+                y = {
+                    sections: [],
+                    toString: function () {
+                     // This function needs documentation.
+                        return y.sections.join('<br>');
+                    },
+                    url: url
+                };
+                templates.push(y);
+                $.getScript(url).done(function () {
+                 // This function needs documentation.
+                    template.ready = true;
+                    return;
+                }).fail(function (jqxhr, settings, exception) {
+                 // This function needs documentation.
+                    window.alert('Error: ' + exception);
+                    return;
+                });
+            } else if (template.queue.length > 0) {
+                window.setTimeout(load_next, 0);
+            }
+            return;
+        };
+        template.queue.push(x);
+        load_next();
+        return;
+    };
+
     templates = [];
 
     uuid = function () {
@@ -364,6 +389,7 @@
     window.range = range;
     window.section = section;
     window.sentence = sentence;
+    window.template = template;
 
  // Invocations
 
