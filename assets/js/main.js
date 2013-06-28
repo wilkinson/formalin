@@ -128,7 +128,7 @@
     generate_report = function () {
      // This function needs documentation.
         /*jslint unparam: true */
-        $('#report-goes-here').html(templates.join('<br>'));
+        $('#report-goes-here').html(templates.join('<p></p>'));
         return;
     };
 
