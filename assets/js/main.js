@@ -11,15 +11,16 @@
 
     /*jshint maxparams: 3, quotmark: single, strict: true */
 
-    /*jslint browser: true, devel: true, indent: 4, maxlen: 80 */
+    /*jslint browser: true, indent: 4, maxlen: 80 */
 
     /*properties
-        alert, append, binary, by, categorical, charAt, done, fail, format,
-        getScript, hasOwnProperty, href, html, join, jQuery, length, log,
-        long_name, off, on, ordinal, push, random, range, ready, replace,
-        script, search, section, sections, sentence, sentences, shift,
-        short_name, slice, split, stringify, templates, title, toString,
-        toUpperCase, url
+        addClass, alert, append, appendTo, apply, attr, binary, by,
+        categorical, charAt, concat, done, fail, format, getScript, hasClass,
+        hasOwnProperty, href, html, indexOf, join, jQuery, length, long_name,
+        match, off, on, ordinal, prototype, push, random, range, ready,
+        removeClass, replace, search, section, sections, sentence, sentences,
+        shift, short_name, slice, split, states, test, text, title,
+        toggleClass, toString, toUpperCase, trim, url, val
     */
 
  // Prerequisites
@@ -32,8 +33,8 @@
  // Declarations
 
     var $, binary, capitalize, categorical, chosen, comma, generate_report,
-        load_templates, off, ordinal, ply, range, save, section, sentence,
-        templates, uuid;
+        load_templates, off, ordinal, ply, range, section, sentence, templates,
+        uuid;
 
  // Definitions
 
@@ -56,7 +57,6 @@
         button.on('click touch', function () {
          // This function needs documentation.
             button.toggleClass(chosen);
-            generate_report();
             return;
         });
         button.toString = function () {
@@ -76,13 +76,14 @@
 
     categorical = function (x) {
      // This function needs documentation.
+        /*jslint unparam: true */
         if ((x instanceof Array) === false) {
             throw new TypeError('Argument must be an array.');
         }
         if (x.length === 0) {
-            throw new ArgumentError('No categories specified.');
+            throw new Error('No categories specified.');
         }
-        var button, current, group, id, toggle;
+        var current, group, id;
         group = $('<div class="btn-group"></div>');
         id = uuid();
         group.attr('id', id);
@@ -99,7 +100,6 @@
                     b.addClass(chosen);
                     current = obj.long_name;
                 }
-                generate_report();
                 return;
             });
             b.appendTo(group);
@@ -127,7 +127,8 @@
 
     generate_report = function () {
      // This function needs documentation.
-        /*jslint unparam: true */
+        var title = $('#case-id').val();
+        $('#modal-label').text((title.length > 0) ? title : 'Report');
         $('#report-goes-here').html(templates.join('<p></p>'));
         return;
     };
@@ -158,12 +159,7 @@
             templates.push(y);
             $.getScript(url).done(function (script, textStatus) {
              // This function needs documentation.
-                if (args.length === 0) {
-                 // Finally, when all scripts have loaded, we assume that all
-                 // sections have been created and insert a horizontal line
-                 // before each section before generating the initial report.
-                    generate_report();
-                } else {
+                if (args.length !== 0) {
                     load_scripts(args);
                 }
                 return;
@@ -189,7 +185,7 @@
 
     ordinal = function (obj) {
      // This function needs documentation.
-        var y = obj;
+        var button, state;
         if ((obj instanceof Object) === false) {
             throw new TypeError('Argument must be an object.');
         }
@@ -205,7 +201,6 @@
         if (obj.states.length === 0) {
             throw new Error('No `states` were specified.');
         }
-        var button, state;
         button = $('<button class="btn"></button>');
         state = obj.states[0];
         button.on('click touch', function () {
@@ -218,7 +213,6 @@
                 button.addClass(chosen);
             }
             button.text(state.toString() + ' ' + obj.short_name);
-            generate_report();
             return;
         });
         button.text(state.toString() + ' ' + obj.short_name);
@@ -262,12 +256,6 @@
         var y = obj;
         // ...
         return y;
-    };
-
-    save = function () {
-     // This function needs documentation.
-        console.log('(placeholder)');
-        return;
     };
 
     section = function (x) {
@@ -328,6 +316,7 @@
             temp = obj.format.match(/([^{}]+|[{][^{}]+[}])/g);
             ply(temp).by(function (key, val) {
              // This function needs documentation.
+                /*jslint unparam: true */
                 if ((/^[{][^{}]+[}]$/).test(val) === false) {
                     return;
                 }
@@ -378,7 +367,9 @@
 
  // Invocations
 
-    $('#save-button').on('click touch', save);
+    $('#the-modal').on('show', generate_report);
+
+    //$('#save-button').on('click touch', function () {});
 
     $(document).ready(load_templates);
 
