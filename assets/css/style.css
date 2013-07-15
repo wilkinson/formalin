@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 25 Jun 2013
- *                                                  ~~ last updated 25 Jun 2013
+ *                                                  ~~ last updated 15 Jul 2013
  */
 
 @media all {
@@ -19,6 +19,10 @@
     }
     .centered {
         text-align: center;
+    }
+    .formalin-textbox {
+        resize: none;
+        width: 100%;
     }
 }
 

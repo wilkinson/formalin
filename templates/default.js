@@ -2,7 +2,7 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 01 Nov 2012
+//                                                  ~~ last updated 15 Jul 2013
 
 section('Peripheral Smear');
 
@@ -370,5 +370,7 @@ sentence({
         ]
     })
 });
+
+textbox('Notes');
 
 //- vim:set syntax=javascript:

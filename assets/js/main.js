@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 25 Jun 2013
-//                                                  ~~ last updated 28 Jun 2013
+//                                                  ~~ last updated 15 Jul 2013
 
 (function () {
     'use strict';
@@ -19,8 +19,9 @@
         hasOwnProperty, href, html, indexOf, join, jQuery, length, long_name,
         match, off, on, ordinal, prototype, push, queue, random, range, ready,
         removeClass, replace, search, section, sections, sentence, sentences,
-        setTimeout, shift, short_name, slice, split, states, template, test,
-        text, title, toggleClass, toString, toUpperCase, trim, url, val
+        setTimeout, shift, short_name, slice, split, states, stringify,
+        template, test, text, textbox, title, toggleClass, toString,
+        toUpperCase, trim, url, val
     */
 
  // Prerequisites
@@ -33,8 +34,8 @@
  // Declarations
 
     var $, binary, capitalize, categorical, chosen, comma, generate_report,
-        load_templates, off, ordinal, ply, range, section, sentence, template,
-        templates, uuid;
+        load_templates, off, ordinal, ply, range, save, section, sentence,
+        template, templates, textbox, uuid;
 
  // Definitions
 
@@ -237,6 +238,31 @@
         return y;
     };
 
+    save = function () {
+     // This function needs documentation.
+     /*
+        var y = '';
+        ply(templates).by(function (i, template) {
+         // This function needs documentation.
+            ply(template.sections).by(function (j, section) {
+             // This function needs documentation.
+                y += 'section(' + JSON.stringify(section.title) + ');';
+                ply(section.sentences).by(function (k, sentence) {
+                 // This function needs documentation.
+                    y += '\nsentence(' +
+                            JSON.stringify({format: sentence.format}) + ');';
+                    return;
+                });
+                return;
+            });
+            return;
+        });
+        console.log(y);
+        return;
+     */
+        return;
+    };
+
     section = function (x) {
      // This function needs documentation.
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
@@ -368,6 +394,25 @@
 
     templates = [];
 
+    textbox = function (x) {
+     // This function needs documentation.
+        if ((typeof x !== 'string') && ((x instanceof String) === false)) {
+            throw new TypeError('Textbox names must be strings.');
+        }
+        var last_template, y;
+        last_template = templates.slice(-1)[0];
+        y = $('<textarea class="formalin-textbox"></textarea>');
+        y.attr('placeholder', x);
+        y.toString = function () {
+         // This function needs documentation.
+            var val = y.val().trim();
+            return (val.length === 0) ? val : x + ': ' + val;
+        };
+        last_template.sections.push(y);
+        $('#templates-go-here').append('<p>').append(y);
+        return;
+    };
+
     uuid = function () {
      // This function generates random hexadecimal UUIDs of length 32.
         var x, y;
@@ -390,12 +435,13 @@
     window.section = section;
     window.sentence = sentence;
     window.template = template;
+    window.textbox = textbox;
 
  // Invocations
 
     $('#the-modal').on('show', generate_report);
 
-    //$('#save-button').on('click touch', function () {});
+    $('#save-button').on('click touch', save);
 
     $(document).ready(load_templates);
 
