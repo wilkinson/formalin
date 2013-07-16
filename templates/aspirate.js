@@ -268,4 +268,6 @@ sentence({
     })
 });
 
+textbox('Notes');
+
 //- vim:set syntax=javascript:
