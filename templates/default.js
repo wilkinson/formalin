@@ -161,7 +161,9 @@ sentence({
     a: binary({
         long_name:  'rouleaux formation',
         short_name: 'rouleaux'
-    })
+    }),
+
+   
 });
 
 sentence({
@@ -370,6 +372,831 @@ sentence({
         ]
     })
 });
+
+
+//- JavaScript source code
+
+//- aspirate.js ~~
+//
+//  This template was pulled from the GitHub repository at
+//      https://github.com/benchill/hpath .
+//
+//  Its original author is Ben C. Hill, M.D.
+//
+//                                          ~~ last updated by SRW, 23 Oct 2012
+textbox('Notes');
+
+section('Aspirate');
+
+sentence({
+    format: 'The aspirate is {u v} with {x y z}.',
+    //u: ordinal({
+      //  long_name:  'made up of cellular particles',
+      //  short_name: 'cellular particles',
+      //  states:     [off, '']
+    //}),
+    
+    //cellularity
+
+    u: categorical([
+        {
+            long_name:  'cellular',
+            short_name: 'cellular'
+        },
+        {
+            long_name:  'paucicellular',
+            short_name: 'paucicellular'
+        },
+        ]),
+
+
+   // v: ordinal({
+     //   long_name:  'paucicellular',
+     //   short_name: 'paucicellular',
+     //   states:     [off, '']
+   // }),
+
+       v: categorical([
+        {
+            long_name:  'and particulate',
+            short_name: 'particulate'
+        },
+        {
+            long_name:  'and pauciparticulate',
+            short_name: 'pauciparticulate'
+        },
+        ]),
+
+        
+    //w: ordinal({
+      //  long_name:  'pauciparticulate',
+      //  short_name: 'pauciparticulate',
+      //  states:     [off, '']
+    //}),
+
+    x: ordinal({
+        long_name:  'trilineage hematopoeisis',
+        short_name: 'TLH',
+        states:     [off, '']
+    }),
+    y: ordinal({
+        long_name:  'blasts',
+        short_name: 'blasts',
+        states: [
+            off,
+            'a mildly increased number of',
+            'a significantly increased number of'
+        ]
+    }),
+    z: ordinal({
+        long_name:  'plasma cells',
+        short_name: 'plasma cells',
+        states: [
+            off,
+            'a mildly increased number of',
+            'a significantly increased number of'
+        ]
+    })
+});
+
+sentence({
+    format: 'The cellular elements are {u v} made up of {w x}.',
+    u: ordinal({
+        long_name:  'predominantly',
+        short_name: 'predominantly',
+        states:     [off, '']
+    }),
+    v: ordinal({
+        long_name:  'exclusively',
+        short_name: 'exclusively',
+        states:     [off, '']
+    }),
+    w: ordinal({
+        long_name:  'blasts',
+        short_name: 'blasts',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'plasma cells',
+        short_name: 'plasma cells',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'Erythropoiesis and myelopoiesis are {w x y} and demonstrate {z}.',
+    w: ordinal({
+        long_name:  'evident',
+        short_name: 'evident',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'increased',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y: ordinal({
+        long_name:  'decreased',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ]),
+});
+
+sentence({
+    format: 'The erythyroid lineage is {w x y} {z a b}.',
+    w: ordinal({
+        long_name:  'evident',
+        short_name: 'evident',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'increased',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y: ordinal({
+        long_name:  'decreased',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ]),
+    a: ordinal({
+        long_name:  'megaloblastic features',
+        short_name: 'megaloblastic',
+        states: [off, 'with', 'with mild', 'with marked']
+    }),
+    b: ordinal({
+        long_name:  'binucleated forms',
+        short_name: 'binucleated forms',
+        states: [off, 'with', 'with few', 'with several']
+    })
+});
+
+sentence({
+    format: 'Myelopoiesis is {w x y} {z}.',
+    w: ordinal({
+        long_name:  'evident',
+        short_name: 'evident',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'increased',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y: ordinal({
+        long_name:  'decreased',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ])
+});
+
+sentence({
+    format: 'Megakarocytes are {x y y2} with {z a b c}.',
+    x: ordinal({
+        long_name:  'adequate',
+        short_name: 'adequate',
+        states:     [off, '']
+    }),
+    y: ordinal({
+        long_name:  'increased in number',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y2: ordinal({
+        long_name:  'decreased in number',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    
+    z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ]),
+
+    a: ordinal({
+        long_name:  'unremarkable morphology',
+        short_name: 'unremarkable',
+        states:     [off, '']
+    }),
+    b: ordinal({
+        long_name:  'hypolobated forms',
+        short_name: 'hypolobated',
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
+    }),
+    c: ordinal({
+        long_name:  'immature forms',
+        short_name: 'immature',
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
+    })
+});
+
+sentence({
+    format: '{x} with {a b} are noted.',
+    x: ordinal({
+        long_name:  'plasma cells',
+        short_name: 'plasma cells',
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
+    }),
+    a: ordinal({
+        long_name:  'unremarkable morphology',
+        short_name: 'unremarkable',
+        states:     [off, '']
+    }),
+    b: ordinal({
+        long_name:  'atypical features',
+        short_name: 'atypical features',
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
+    })
+});
+
+sentence({
+    format: 'There is {x} dysplasia or increase in blasts.',
+    x: ordinal({
+        long_name:  'no',
+        short_name: 'no',
+        states:     [off, '']
+    })
+});
+
+
+sentence({
+    format: 'There is {x} dysplasia.',
+    x: ordinal({
+        long_name:  'no',
+        short_name: 'no',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'There is no {x}.',
+    x: ordinal({
+        long_name:  'increase in blasts',
+        short_name: 'blasts',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'No {x} are noted.',
+    x: ordinal({
+        long_name:  'lymphoid aggregates',
+        short_name: 'lymphoid aggregates',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'Touch imprint {x}.',
+    
+    x: categorical([
+        {
+            long_name:  'shows similar findings',
+            short_name: 'similar findings'
+        },
+        {
+            long_name:  'is paucicellular and inadequate for further evaluation',
+            short_name: 'paucicellular'
+        },
+        ])
+});
+
+//- vim:set syntax=javascript:
+
+//- JavaScript source code
+
+//- boneMarrow.js ~~
+//
+//  This template was pulled from the GitHub repository at
+//      https://github.com/benchill/hpath .
+//
+//  Its original author is Ben C. Hill, M.D.
+//
+//                                          ~~ last updated by SRW, 23 Oct 2012
+
+textbox('Notes');
+
+section('Bone Marrow');
+
+sentence({
+    format: '{u} procedure was performed.',
+    u: ordinal({
+        long_name:  'Decalcification',
+        short_name: 'Decalcification',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'The biopsy was obtained from the {u u2 v} posterior iliac crest and measures {w}.{x} {w2}.{x2} cm in maximum gross dimension.',
+    u: ordinal({
+        long_name:  'right',
+        short_name: 'right',
+        states:     [off, '']
+    }),
+    u2: ordinal({
+        long_name:  'and',
+        short_name: 'and',
+        states:     [off, '']
+    }),
+    v: ordinal({
+        long_name:  'left',
+        short_name: 'left',
+        states:     [off, '']
+    }),
+    w: ordinal({
+        long_name:  '',
+        short_name: 'X',
+        states:     [off, '0', '1', '2', '3', '4', '5']
+    }),
+    x: ordinal({
+        long_name:  '',
+        short_name: 'X',
+        states:    [off, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    }),
+
+    w2: ordinal({
+        long_name:  'and ',
+        short_name: 'X',
+        states:     [off, '0', '1', '2', '3', '4', '5']
+    }),
+    x2: ordinal({
+        long_name:  '',
+        short_name: 'X',
+        states:    [off, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    })
+
+});
+
+sentence({
+    format: 'The biopsy specimen is {u u2 u4 u3 u5 v}.',
+    u: ordinal({
+        long_name:  'adequate',
+        short_name: 'adequate',
+        states:     [off, '']
+    }),
+
+    u2: ordinal({
+        long_name:  'fragmented',
+        short_name: 'fragmented',
+        states:     [off, '']
+    }),
+
+    u4: ordinal({
+        long_name:  'and is',
+        short_name: 'and',
+        states:     [off, '']
+    }),
+
+    u3: ordinal({
+        long_name:  'displays crush artifact',
+        short_name: 'crush artifact',
+        states:     [off, '']
+    }),
+
+    
+    u5: ordinal({
+        long_name:  'and is',
+        short_name: 'and',
+        states:     [off, '']
+    }),
+
+    v: ordinal({
+        long_name:  'inadequate for interpretation',
+        short_name: 'inadequate',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'The biopsy shows {u a} marrow ' +
+                '({b} {c} % {d} {e} {f}) {x y z}.',
+   // u: ordinal({
+     //   long_name:  'normocellular',
+     //   short_name: 'normocellular',
+     //   states:     [off, '']
+   // }),
+
+    u: categorical([
+        {
+            long_name:  'normocellular',
+            short_name: 'normocellular'
+        },
+        {
+            long_name:  'hypocellular',
+            short_name: 'hypocellular'
+        },
+        {
+            long_name:  'hypercellular',
+            short_name: 'hypercellular'
+        }
+    ]),
+   // v: ordinal({
+     //   long_name:  'hypocellular',
+     //   short_name: 'hypocellular',
+     //   states:     [off, '', 'slightly', 'markedly']
+    //}),
+    //w: ordinal({
+      //  long_name:  'hypercellular',
+       // short_name: 'hypercellular',
+       // states:     [off, '', 'slightly', 'markedly']
+   // }),
+    a: ordinal({
+        long_name:  'variably cellular',
+        short_name: 'variably cellular',
+        states:     [off, '', 'slightly', 'markedly']
+    }),
+    b: ordinal({
+        long_name:  '',
+        short_name: 'X',
+        states:     [off, '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    }),
+    c: ordinal({
+        long_name:  '',
+        short_name: 'X',
+        states:     [off, '0', '5']
+    }),
+    d: ordinal({
+        long_name:  'to',
+        short_name: 'to',
+        states:     [off, '']
+    }),
+    e: ordinal({
+        long_name:  '',
+        short_name: 'X',
+        states:     [off, '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    }),
+    f: ordinal({
+        long_name:  '%',
+        short_name: 'X',
+        states:     [off, '0', '5']
+    }),
+    x: ordinal({
+        long_name:  ' with trilineage hematopoeisis',
+        short_name: 'TLH',
+        states:     [off, '']
+    }),
+    y: ordinal({
+        long_name:  'blasts',
+        short_name: 'blasts',
+        states: [
+            off,
+            'with a mildly increased number of',
+            'with a markedly increased number of',
+            'consisting predominantly of'
+        ]
+    }),
+    z: ordinal({
+        long_name:  'plasma cells',
+        short_name: 'plasma cells',
+        states: [
+            off,
+            'a mildly increased number of',
+            'a significantly increased number of',
+            'consisting predominantly of'
+        ]
+    })
+});
+
+sentence({
+    format: 'The cellular elements are {u v} made up of {w x}.',
+    u: ordinal({
+        long_name:  'predominantly',
+        short_name: 'predominantly',
+        states:     [off, '']
+    }),
+    v: ordinal({
+        long_name:  'exclusively',
+        short_name: 'exclusively',
+        states:     [off, '']
+    }),
+    w: ordinal({
+        long_name:  'blasts',
+        short_name: 'blasts',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'plasma cells',
+        short_name: 'plasma cells',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'Erythropoiesis and myelopoiesis are {w x y} {z}.',
+    w: ordinal({
+        long_name:  'evident',
+        short_name: 'evident',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'increased',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y: ordinal({
+        long_name:  'decreased',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+   z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ])
+});
+
+sentence({
+    format: 'Erythropoiesis is {w x y} {z a}.',
+    w: ordinal({
+        long_name:  'evident',
+        short_name: 'evident',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'increased',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y: ordinal({
+        long_name:  'decreased',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ]),
+
+    a: ordinal({
+        long_name:  'megaloblastic changes',
+        short_name: 'megaloblastic',
+        states:     [off, 'with', 'with mild', 'with marked']
+    })
+});
+
+sentence({
+    format: 'Myelopoiesis is {w x y} {z}.',
+    w: ordinal({
+        long_name:  'evident',
+        short_name: 'evident',
+        states:     [off, '']
+    }),
+    x: ordinal({
+        long_name:  'increased',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y: ordinal({
+        long_name:  'decreased',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ])
+   
+});
+
+sentence({
+    format: 'Megakarocytes are {x y y2} with {z a b c}.',
+    x: ordinal({
+        long_name:  'adequate',
+        short_name: 'adequate',
+        states:     [off, '']
+    }),
+    y: ordinal({
+        long_name:  'increased in number',
+        short_name: 'increased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    y2: ordinal({
+        long_name:  'decreased in number',
+        short_name: 'decreased',
+        states:     [off, '', 'mildly', 'markedly']
+    }),
+    
+    z: categorical([
+        {
+            long_name:  'normal maturation',
+            short_name: 'normal maturation'
+        },
+        {
+            long_name:  'a left shift',
+            short_name: 'left shift'
+        },
+        ]),
+
+    a: ordinal({
+        long_name:  'unremarkable morphology',
+        short_name: 'unremarkable',
+        states:     [off, '']
+    }),
+    b: ordinal({
+        long_name:  'hypolobated forms',
+        short_name: 'hypolobated',
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
+    }),
+    c: ordinal({
+        long_name:  'immature forms',
+        short_name: 'immature',
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'several']
+    })
+});
+
+sentence({
+    format: '{x} with {a b c} are noted.',
+    x: ordinal({
+        long_name:  'plasma cells',
+        short_name: 'plasma cells',
+        states:     [off, 'rare', 'scattered', 'several', 'numerous']
+    }),
+    a: ordinal({
+        long_name:  'unremarkable morphology',
+        short_name: 'unremarkable',
+        states:     [off, '']
+    }),
+    b: ordinal({
+        long_name:  'atypical features',
+        short_name: 'atypical features',
+        states:     [off, 'rare', 'few', 'scattered', 'occasional', 'prominent']
+    }),
+    c: ordinal({
+        long_name:  'plasma cell aggregates',
+        short_name: 'aggregates',
+        states: [
+            off, 'no', 'rare', 'few', 'scattered', 'occasional', 'several'
+        ]
+    })
+});
+
+sentence({
+    format: 'The marrow contains {x y}',
+    x: ordinal({
+        long_name:  'stromal damage',
+        short_name: 'stromal damage',
+        states:     [off, 'mild', 'moderate', 'severe']
+    }),
+    
+    y: ordinal({
+        long_name:  'fibrosis',
+        short_name: 'fibrosis',
+        states:     [off, 'mild', 'moderate', 'severe']
+    })
+
+});
+
+
+sentence({
+    format: 'There is {x} dysplasia or increase in blasts.',
+    x: ordinal({
+        long_name:  'no',
+        short_name: 'no',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'There is {x} dysplasia.',
+    x: ordinal({
+        long_name:  'no',
+        short_name: 'no',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: 'There is no {x}.',
+    x: ordinal({
+        long_name:  'increase in blasts',
+        short_name: 'blasts',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: '{x} are noted.',
+    x: ordinal({
+        long_name:  'lymphoid aggregates',
+        short_name: 'lymphoid aggregates',
+        states: [
+            off, 'no', 'rare', 'a few', 'scattered', 'occasional', 'several'
+        ]
+    })
+});
+
+textbox('Notes');
+//- vim:set syntax=javascript:
+
+
+
+
+//- vim:set syntax=javascript:
+//- JavaScript source code
+
+//- specialStains.js ~~
+//
+//  This template was pulled from the GitHub repository at
+//      https://github.com/benchill/hpath .
+//
+//  Its original author is Ben C. Hill, M.D.
+//
+//                                          ~~ last updated by SRW, 23 Oct 2012
+
+section('Special Stains');
+
+sentence({
+    format: 'Stainable iron is {w x y z}.',
+    w: ordinal({
+        long_name:  'absent',
+        short_name: 'absent',
+        states:     [off, '', 'virtually']
+    }),
+    x: ordinal({
+        long_name:  'increased',
+        short_name: 'increased',
+        states:     [off, 'mildly', 'moderately', 'severely']
+    }),
+    y: ordinal({
+        long_name:  'decreased',
+        short_name: 'decreased',
+        states:     [off, 'mildly', 'moderately', 'severely']
+    }),
+    z: ordinal({
+        long_name:  'present',
+        short_name: 'present',
+        states:     [off, '']
+    })
+});
+
+sentence({
+    format: '{a} are identified.',
+    a: ordinal({
+        long_name:  'ringed sideroblasts',
+        short_name: 'ringed sideroblast',
+        states: [
+            off, 'no', 'rare', 'a few', 'scattered', 'occasional', 'several'
+        ]
+    })
+});
+
+textbox('Notes');
+
+section("Diagnosis")
 
 textbox('Notes');
 
