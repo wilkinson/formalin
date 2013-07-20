@@ -280,8 +280,14 @@
             }
         };
         last_template.sections.push(y);
+/*
         $('#templates-go-here').append('<hr><h2>' + x +
-            ' <a href="' + url + '"><span class="icon-file"></span></a></h2>');
+            '<a href="' + url + '" class="pull-right" target="_blank">' +
+            '<span class="icon-file"></span></a></h2>');
+*/
+        $('#templates-go-here').append('<hr><h2>' + x +
+            '<a href="' + url + '" class="pull-right" target="_blank">' +
+            '<span class="icon-file"></span></a></h2>');
         return;
     };
 
