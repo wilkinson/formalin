@@ -492,12 +492,12 @@ sentence({
     }),
     x: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
     z: categorical([
@@ -521,12 +521,12 @@ sentence({
     }),
     x: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
     z: categorical([
@@ -560,12 +560,12 @@ sentence({
     }),
     x: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
     z: categorical([
@@ -589,12 +589,12 @@ sentence({
     }),
     y: ordinal({
         long_name:  'increased in number',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y2: ordinal({
         long_name:  'decreased in number',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
     
@@ -907,12 +907,12 @@ sentence({
     }),
     x: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
    z: categorical([
@@ -936,12 +936,12 @@ sentence({
     }),
     x: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
     z: categorical([
@@ -971,12 +971,12 @@ sentence({
     }),
     x: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
     z: categorical([
@@ -1001,12 +1001,12 @@ sentence({
     }),
     y: ordinal({
         long_name:  'increased in number',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, '', 'mildly', 'markedly']
     }),
     y2: ordinal({
         long_name:  'decreased in number',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, '', 'mildly', 'markedly']
     }),
     
@@ -1148,12 +1148,12 @@ sentence({
     }),
     x: ordinal({
         long_name:  'increased',
-        short_name: 'increased',
+        short_name: '\u2191',
         states:     [off, 'mildly', 'moderately', 'severely']
     }),
     y: ordinal({
         long_name:  'decreased',
-        short_name: 'decreased',
+        short_name: '\u2193',
         states:     [off, 'mildly', 'moderately', 'severely']
     }),
     z: ordinal({
