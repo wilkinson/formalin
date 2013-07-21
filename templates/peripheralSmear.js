@@ -1,8 +1,8 @@
-//- JavaScript source code
+//- Formalin template
 
 //- peripheralSmear.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 17 May 2013
+//                                                  ~~ last updated 20 Jul 2013
 
 section('Peripheral Smear');
 

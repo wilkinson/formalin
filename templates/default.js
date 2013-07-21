@@ -1,8 +1,8 @@
-//- JavaScript source code
+//- Formalin template
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 15 Jul 2013
+//                                                  ~~ last updated 20 Jul 2013
 
 section('Peripheral Smear');
 
@@ -161,9 +161,7 @@ sentence({
     a: binary({
         long_name:  'rouleaux formation',
         short_name: 'rouleaux'
-    }),
-
-   
+    })
 });
 
 sentence({
@@ -373,8 +371,7 @@ sentence({
     })
 });
 
-
-//- JavaScript source code
+textbox('Notes');
 
 //- aspirate.js ~~
 //
@@ -384,20 +381,11 @@ sentence({
 //  Its original author is Ben C. Hill, M.D.
 //
 //                                          ~~ last updated by SRW, 23 Oct 2012
-textbox('Notes');
 
 section('Aspirate');
 
 sentence({
     format: 'The aspirate is {u v} with {x y z}.',
-    //u: ordinal({
-      //  long_name:  'made up of cellular particles',
-      //  short_name: 'cellular particles',
-      //  states:     [off, '']
-    //}),
-    
-    //cellularity
-
     u: categorical([
         {
             long_name:  'cellular',
@@ -406,17 +394,9 @@ sentence({
         {
             long_name:  'paucicellular',
             short_name: 'paucicellular'
-        },
-        ]),
-
-
-   // v: ordinal({
-     //   long_name:  'paucicellular',
-     //   short_name: 'paucicellular',
-     //   states:     [off, '']
-   // }),
-
-       v: categorical([
+        }
+    ]),
+    v: categorical([
         {
             long_name:  'and particulate',
             short_name: 'particulate'
@@ -424,16 +404,8 @@ sentence({
         {
             long_name:  'and pauciparticulate',
             short_name: 'pauciparticulate'
-        },
-        ]),
-
-        
-    //w: ordinal({
-      //  long_name:  'pauciparticulate',
-      //  short_name: 'pauciparticulate',
-      //  states:     [off, '']
-    //}),
-
+        }
+    ]),
     x: ordinal({
         long_name:  'trilineage hematopoeisis',
         short_name: 'TLH',
@@ -508,8 +480,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ]),
+        }
+    ])
 });
 
 sentence({
@@ -537,8 +509,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ]),
+        }
+    ]),
     a: ordinal({
         long_name:  'megaloblastic features',
         short_name: 'megaloblastic',
@@ -576,8 +548,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ])
+        }
+    ])
 });
 
 sentence({
@@ -597,7 +569,6 @@ sentence({
         short_name: symbol('down arrow'),
         states:     [off, '', 'mildly', 'markedly']
     }),
-    
     z: categorical([
         {
             long_name:  'normal maturation',
@@ -606,9 +577,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ]),
-
+        }
+    ]),
     a: ordinal({
         long_name:  'unremarkable morphology',
         short_name: 'unremarkable',
@@ -684,7 +654,6 @@ sentence({
 
 sentence({
     format: 'Touch imprint {x}.',
-    
     x: categorical([
         {
             long_name:  'shows similar findings',
@@ -693,13 +662,9 @@ sentence({
         {
             long_name:  'is paucicellular and inadequate for further evaluation',
             short_name: 'paucicellular'
-        },
-        ])
+        }
+    ])
 });
-
-//- vim:set syntax=javascript:
-
-//- JavaScript source code
 
 //- boneMarrow.js ~~
 //
@@ -745,7 +710,6 @@ sentence({
         short_name: 'X',
         states:    [off, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     }),
-
     w2: ordinal({
         long_name:  'and ',
         short_name: 'X',
@@ -756,7 +720,6 @@ sentence({
         short_name: 'X',
         states:    [off, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     })
-
 });
 
 sentence({
@@ -766,7 +729,6 @@ sentence({
         short_name: 'adequate',
         states:     [off, '']
     }),
-
     u2: ordinal({
         long_name:  'is fragmented',
         short_name: 'fragmented',
@@ -787,12 +749,6 @@ sentence({
 sentence({
     format: 'The biopsy shows {u a} marrow ' +
                 '({b} {c} % {d} {e} {f}) {x y z}.',
-   // u: ordinal({
-     //   long_name:  'normocellular',
-     //   short_name: 'normocellular',
-     //   states:     [off, '']
-   // }),
-
     u: categorical([
         {
             long_name:  'normocellular',
@@ -807,16 +763,6 @@ sentence({
             short_name: 'hypercellular'
         }
     ]),
-   // v: ordinal({
-     //   long_name:  'hypocellular',
-     //   short_name: 'hypocellular',
-     //   states:     [off, '', 'slightly', 'markedly']
-    //}),
-    //w: ordinal({
-      //  long_name:  'hypercellular',
-       // short_name: 'hypercellular',
-       // states:     [off, '', 'slightly', 'markedly']
-   // }),
     a: ordinal({
         long_name:  'variably cellular',
         short_name: 'variably cellular',
@@ -915,7 +861,7 @@ sentence({
         short_name: symbol('down arrow'),
         states:     [off, '', 'mildly', 'markedly']
     }),
-   z: categorical([
+    z: categorical([
         {
             long_name:  'normal maturation',
             short_name: 'normal maturation'
@@ -923,8 +869,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ])
+        }
+    ])
 });
 
 sentence({
@@ -952,9 +898,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ]),
-
+        }
+    ]),
     a: ordinal({
         long_name:  'megaloblastic changes',
         short_name: 'megaloblastic',
@@ -987,9 +932,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ])
-   
+        }
+    ])
 });
 
 sentence({
@@ -1009,7 +953,6 @@ sentence({
         short_name: symbol('down arrow'),
         states:     [off, '', 'mildly', 'markedly']
     }),
-    
     z: categorical([
         {
             long_name:  'normal maturation',
@@ -1018,9 +961,8 @@ sentence({
         {
             long_name:  'a left shift',
             short_name: 'left shift'
-        },
-        ]),
-
+        }
+    ]),
     a: ordinal({
         long_name:  'unremarkable morphology',
         short_name: 'unremarkable',
@@ -1071,15 +1013,12 @@ sentence({
         short_name: 'stromal damage',
         states:     [off, 'mild', 'moderate', 'severe']
     }),
-    
     y: ordinal({
         long_name:  'fibrosis',
         short_name: 'fibrosis',
         states:     [off, 'mild', 'moderate', 'severe']
     })
-
 });
-
 
 sentence({
     format: 'There is {x} dysplasia or increase in blasts.',
@@ -1120,13 +1059,6 @@ sentence({
 });
 
 textbox('Notes');
-//- vim:set syntax=javascript:
-
-
-
-
-//- vim:set syntax=javascript:
-//- JavaScript source code
 
 //- specialStains.js ~~
 //
@@ -1176,7 +1108,7 @@ sentence({
 
 textbox('Notes');
 
-section("Diagnosis")
+section('Diagnosis');
 
 textbox('Notes');
 

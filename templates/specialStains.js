@@ -1,4 +1,4 @@
-//- JavaScript source code
+//- Formalin template
 
 //- specialStains.js ~~
 //
@@ -7,7 +7,7 @@
 //
 //  Its original author is Ben C. Hill, M.D.
 //
-//                                          ~~ last updated by SRW, 23 Oct 2012
+//                                          ~~ last updated by SRW, 20 Jul 2013
 
 section('Special Stains');
 
