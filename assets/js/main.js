@@ -19,7 +19,7 @@
         hasOwnProperty, href, html, indexOf, join, jQuery, length, long_name,
         match, off, on, ordinal, prototype, push, queue, random, range, ready,
         removeClass, replace, search, section, sections, sentence, sentences,
-        setTimeout, shift, short_name, slice, split, states, stringify,
+        setTimeout, shift, short_name, slice, split, states, stringify, symbol,
         template, test, text, textbox, title, toggleClass, toString,
         toUpperCase, trim, url, val
     */
@@ -389,7 +389,16 @@
                     sections: [],
                     toString: function () {
                      // This function needs documentation.
-                        return y.sections.join('<br>');
+                        var content, i, n, temp;
+                        n = y.sections.length;
+                        temp = [];
+                        for (i = 0; i < n; i += 1) {
+                            content = y.sections[i].toString();
+                            if (content.length > 0) {
+                                temp.push(content);
+                            }
+                        }
+                        return temp.join('<br>');
                     },
                     url: url
                 };
