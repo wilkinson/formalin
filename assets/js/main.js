@@ -35,7 +35,7 @@
 
     var $, binary, capitalize, categorical, chosen, comma, generate_report,
         load_templates, off, ordinal, ply, range, save, section, sentence,
-        template, templates, textbox, uuid;
+        symbol, template, templates, textbox, uuid;
 
  // Definitions
 
@@ -347,6 +347,26 @@
         return;
     };
 
+    symbol = function (x) {
+     // This function translates known keywords into Unicode characters. If the
+     // input string doesn't match a known keyword, it will return the input.
+        if ((typeof x !== 'string') && ((x instanceof String) === false)) {
+            throw new TypeError('`symbol` input must be a string.');
+        }
+        var y;
+        switch (x) {
+        case 'down arrow':
+            y = '\u2193';
+            break;
+        case 'up arrow':
+            y = '\u2191';
+            break;
+        default:
+            y = x;
+        }
+        return y;
+    };
+
     template = function (x) {
      // This function needs documentation.
         if (typeof x !== 'string') {
@@ -435,6 +455,7 @@
     window.range = range;
     window.section = section;
     window.sentence = sentence;
+    window.symbol = symbol;
     window.template = template;
     window.textbox = textbox;
 
