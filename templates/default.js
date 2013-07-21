@@ -760,7 +760,7 @@ sentence({
 });
 
 sentence({
-    format: 'The biopsy specimen is {u u2 u4 u3 u5 v}.',
+    format: 'The biopsy specimen is {u u2 u3 v}.',
     u: ordinal({
         long_name:  'adequate',
         short_name: 'adequate',
@@ -768,32 +768,17 @@ sentence({
     }),
 
     u2: ordinal({
-        long_name:  'fragmented',
+        long_name:  'is fragmented',
         short_name: 'fragmented',
         states:     [off, '']
     }),
-
-    u4: ordinal({
-        long_name:  'and is',
-        short_name: 'and',
-        states:     [off, '']
-    }),
-
     u3: ordinal({
         long_name:  'displays crush artifact',
         short_name: 'crush artifact',
         states:     [off, '']
     }),
-
-    
-    u5: ordinal({
-        long_name:  'and is',
-        short_name: 'and',
-        states:     [off, '']
-    }),
-
     v: ordinal({
-        long_name:  'inadequate for interpretation',
+        long_name:  'is inadequate for interpretation',
         short_name: 'inadequate',
         states:     [off, '']
     })
