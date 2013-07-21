@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 25 Jun 2013
-//                                                  ~~ last updated 20 Jul 2013
+//                                                  ~~ last updated 21 Jul 2013
 
 (function () {
     'use strict';
@@ -34,8 +34,8 @@
  // Declarations
 
     var $, binary, capitalize, categorical, chosen, comma, generate_report,
-        load_templates, off, ordinal, ply, range, save, section, sentence,
-        symbol, template, templates, textbox, uuid;
+        join_nonempty, load_templates, off, ordinal, ply, range, save,
+        section, sentence, symbol, template, templates, textbox, uuid;
 
  // Definitions
 
@@ -128,10 +128,32 @@
 
     generate_report = function () {
      // This function needs documentation.
-        var title = $('#case-id').val();
+        var report, title;
+        report = join_nonempty(templates, '<p></p>');
+        title = $('#case-id').val();
+        if (report.length === 0) {
+            report = 'No data have been entered.';
+        }
         $('#modal-label').text((title.length > 0) ? title : 'Report');
-        $('#report-goes-here').html(templates.join('<p></p>'));
+        $('#report-goes-here').html(report);
         return;
+    };
+
+    join_nonempty = function (x, delimiter) {
+     // This function needs documentation.
+        if ((x instanceof Array) === false) {
+            throw new TypeError('Argument must be an array.');
+        }
+        var i, n, temp, y;
+        n = x.length;
+        y = [];
+        for (i = 0; i < n; i += 1) {
+            temp = x[i].toString().trim();
+            if (temp.length > 0) {
+                y.push(temp);
+            }
+        }
+        return y.join(delimiter);
     };
 
     load_templates = function () {
@@ -276,7 +298,11 @@
             title: x,
             toString: function () {
              // This function needs documentation.
-                return x.toUpperCase() + '<br>' + y.sentences.join(' ');
+                var content = join_nonempty(y.sentences, ' ');
+                if (content.length > 0) {
+                    content = x.toUpperCase() + '<br>' + content;
+                }
+                return content;
             }
         };
         last_template.sections.push(y);
@@ -389,16 +415,7 @@
                     sections: [],
                     toString: function () {
                      // This function needs documentation.
-                        var content, i, n, temp;
-                        n = y.sections.length;
-                        temp = [];
-                        for (i = 0; i < n; i += 1) {
-                            content = y.sections[i].toString();
-                            if (content.length > 0) {
-                                temp.push(content);
-                            }
-                        }
-                        return temp.join('<br>');
+                        return join_nonempty(y.sections, '<br>');
                     },
                     url: url
                 };
