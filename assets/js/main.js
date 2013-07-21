@@ -2,7 +2,7 @@
 
 //- main.js ~~
 //                                                      ~~ (c) SRW, 25 Jun 2013
-//                                                  ~~ last updated 15 Jul 2013
+//                                                  ~~ last updated 20 Jul 2013
 
 (function () {
     'use strict';
@@ -280,14 +280,9 @@
             }
         };
         last_template.sections.push(y);
-/*
         $('#templates-go-here').append('<hr><h2>' + x +
             '<a href="' + url + '" class="pull-right" target="_blank">' +
-            '<span class="icon-file"></span></a></h2>');
-*/
-        $('#templates-go-here').append('<hr><h2>' + x +
-            '<a href="' + url + '" class="pull-right" target="_blank">' +
-            '<span class="icon-file"></span></a></h2>');
+            '<span class="icon-file-text"></span></a></h2>');
         return;
     };
 
