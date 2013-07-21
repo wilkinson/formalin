@@ -708,7 +708,7 @@ sentence({
 //
 //  Its original author is Ben C. Hill, M.D.
 //
-//                                          ~~ last updated by SRW, 23 Oct 2012
+//                                          ~~ last updated by SRW, 20 Jul 2013
 
 textbox('Notes');
 
@@ -724,15 +724,10 @@ sentence({
 });
 
 sentence({
-    format: 'The biopsy was obtained from the {u u2 v} posterior iliac crest and measures {w}.{x} {w2}.{x2} cm in maximum gross dimension.',
+    format: 'The biopsy was obtained from the {u v} posterior iliac crest and measures {w}.{x} {w2}.{x2} cm in maximum gross dimension.',
     u: ordinal({
         long_name:  'right',
         short_name: 'right',
-        states:     [off, '']
-    }),
-    u2: ordinal({
-        long_name:  'and',
-        short_name: 'and',
         states:     [off, '']
     }),
     v: ordinal({
