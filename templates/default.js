@@ -2,7 +2,7 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 20 Jul 2013
+//                                                  ~~ last updated 22 Jul 2013
 
 section('Peripheral Smear');
 
@@ -1110,6 +1110,6 @@ textbox('Notes');
 
 section('Diagnosis');
 
-textbox('Notes');
+textbox('');
 
 //- vim:set syntax=javascript:

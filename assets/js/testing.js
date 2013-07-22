@@ -1,6 +1,6 @@
 //- JavaScript source code
 
-//- main.js ~~
+//- testing.js ~~
 //
 //  Known issues:
 //  -   https://github.com/twitter/bootstrap/pull/7692

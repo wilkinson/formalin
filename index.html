@@ -2,7 +2,7 @@
 <!--
     index.html ~~
                                                         ~~ (c) SRW, 25 Jun 2013
-                                                    ~~ last updated 21 Jul 2013
+                                                    ~~ last updated 22 Jul 2013
 -->
 <html lang="en">
   <head>
@@ -96,9 +96,8 @@
 
     <div class="container">
       <div class="centered form-inline">
-        <label for="case-id">Case Identifier:</label>
         <input class="span3" id="case-id" type="text"
-            pattern="[\S\s]+" placeholder="John Doe" required>
+            pattern="[\S\s]+" placeholder="Case Identifier" required>
         <a href="#the-modal" role="button" class="btn btn-primary"
             data-toggle="modal">Generate Report</a>
       </div>
@@ -117,6 +116,8 @@
       <div class="modal-footer">
         <button class="btn"
             data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn"
+            id="print-button" aria-hidden="true">Print</button>
       </div>
     </div>
 
