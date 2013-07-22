@@ -1099,7 +1099,7 @@ sentence({
     format: '{a} are identified.',
     a: ordinal({
         long_name:  'ringed sideroblasts',
-        short_name: 'ringed sideroblast',
+        short_name: 'ringed sideroblasts',
         states: [
             off, 'no', 'rare', 'a few', 'scattered', 'occasional', 'several'
         ]
