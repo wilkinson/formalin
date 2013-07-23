@@ -554,7 +554,7 @@
         }
         var last_section, y;
         last_section = templates.slice(-1)[0].sections.slice(-1)[0];
-        y = $('<textarea class="formalin-textbox"></textarea>');
+        y = $('<textarea class="span12"></textarea>');
         y.attr('placeholder', x);
         y.toString = function () {
          // This function needs documentation.

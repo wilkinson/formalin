@@ -2,7 +2,7 @@
 
 /*- style.css ~~
  *                                                      ~~ (c) SRW, 25 Jun 2013
- *                                                  ~~ last updated 15 Jul 2013
+ *                                                  ~~ last updated 22 Jul 2013
  */
 
 @media all {
@@ -17,12 +17,11 @@
     input:invalid {
         background-color: pink;
     }
+    textarea {
+        resize: none;
+    }
     .centered {
         text-align: center;
-    }
-    .formalin-textbox {
-        resize: none;
-        width: 100%;
     }
 }
 
