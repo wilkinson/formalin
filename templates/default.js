@@ -740,7 +740,7 @@ sentence({
 
 sentence({
     format: 'The biopsy shows {u a} marrow ' +
-                '({b} {c} % {d} {e} {f}) {x y z}.',
+                '({b}% to {e}%) {x y z}.',
     u: categorical([
         {
             long_name:  'normocellular',
@@ -760,30 +760,17 @@ sentence({
         short_name: 'variably cellular',
         states:     [off, '', 'slightly', 'markedly']
     }),
-    b: ordinal({
-        long_name:  '',
-        short_name: 'X',
-        states:     [off, '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    b: number({
+        min: 0,
+        max: 100,
+        step: 5,
+        value: 40
     }),
-    c: ordinal({
-        long_name:  '',
-        short_name: 'X',
-        states:     [off, '0', '5']
-    }),
-    d: ordinal({
-        long_name:  'to',
-        short_name: 'to',
-        states:     [off, '']
-    }),
-    e: ordinal({
-        long_name:  '',
-        short_name: 'X',
-        states:     [off, '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    }),
-    f: ordinal({
-        long_name:  '%',
-        short_name: 'X',
-        states:     [off, '0', '5']
+    e: number({
+        min: 0,
+        max: 100,
+        step: 5,
+        value: 40
     }),
     x: ordinal({
         long_name:  ' with trilineage hematopoeisis',
