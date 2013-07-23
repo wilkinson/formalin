@@ -689,7 +689,7 @@ sentence({
 });
 
 sentence({
-    format: 'The biopsy was obtained from the {u v} posterior iliac crest and measures {w} and {x} cm in maximum gross dimension.',
+    format: 'The biopsy was obtained from the {u v} posterior iliac crest and measures {w x} cm in maximum gross dimension.',
     u: ordinal({
         long_name:  'right',
         short_name: 'right',
