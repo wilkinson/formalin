@@ -689,7 +689,7 @@ sentence({
 });
 
 sentence({
-    format: 'The biopsy was obtained from the {u v} posterior iliac crest and measures {w}.{x} {w2}.{x2} cm in maximum gross dimension.',
+    format: 'The biopsy was obtained from the {u v} posterior iliac crest and measures {w} and {x} cm in maximum gross dimension.',
     u: ordinal({
         long_name:  'right',
         short_name: 'right',
@@ -700,25 +700,17 @@ sentence({
         short_name: 'left',
         states:     [off, '']
     }),
-    w: ordinal({
-        long_name:  '',
-        short_name: 'X',
-        states:     [off, '0', '1', '2', '3', '4', '5']
+    w: number({
+        min: 0,
+        max: 6,
+        step: 0.1,
+        value: 1.0
     }),
-    x: ordinal({
-        long_name:  '',
-        short_name: 'X',
-        states:    [off, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    }),
-    w2: ordinal({
-        long_name:  'and ',
-        short_name: 'X',
-        states:     [off, '0', '1', '2', '3', '4', '5']
-    }),
-    x2: ordinal({
-        long_name:  '',
-        short_name: 'X',
-        states:    [off, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    x: number({
+        min: 0,
+        max: 6,
+        step: 0.1,
+        value: 1
     })
 });
 
