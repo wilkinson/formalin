@@ -21,12 +21,12 @@
         addClass, alert, append, appendTo, apply, attr, binary, body, by,
         categorical, charAt, concat, done, fail, focus, format, frames,
         getScript, hasClass, hasOwnProperty, href, html, indexOf, join, jQuery,
-        length, long_name, match, off, on, ordinal, print, 'print-frame',
-        prototype, push, queue, random, range, ready, remove, removeClass,
-        replace, search, section, sections, sentence, sentences, setTimeout,
-        shift, short_name, slice, split, states, stringify, symbol, template,
-        test, text, textbox, title, toggleClass, toString, toUpperCase, trim,
-        url, val
+        length, long_name, match, max, min, number, off, on, ordinal, print,
+        'print-frame', prototype, push, queue, random, range, ready, remove,
+        removeClass, replace, search, section, sections, sentence, sentences,
+        setTimeout, shift, short_name, slice, split, states, step, stringify,
+        symbol, template, test, text, textbox, title, toggleClass, toString,
+        toUpperCase, trim, url, val, value
     */
 
  // Prerequisites
@@ -39,7 +39,7 @@
  // Declarations
 
     var $, binary, capitalize, categorical, chosen, comma, generate_report,
-        join_nonempty, load_templates, off, ordinal, ply, range, save,
+        join_nonempty, load_templates, number, off, ordinal, ply, save,
         section, sentence, symbol, template, templates, textbox, uuid;
 
  // Definitions
@@ -180,14 +180,53 @@
         return;
     };
 
-    off = function () {
+    number = function (obj) {
      // This function needs documentation.
-        return;
+        if ((obj instanceof Object) === false) {
+            throw new TypeError('Input argument must be an object.');
+        }
+        var previous, y;
+        previous = '';
+        y = $('<input type="number" class="centered input-mini">');
+        y.on('change input', function () {
+         // This function isn't perfect yet -- it miscalculates for the edges
+         // when the `step` hits `min` or `max` before we add the `value` ...
+            if ((previous === '') && (typeof obj.value === 'number')) {
+                y.val(parseFloat(y.val()) + obj.value);
+            }
+            previous = y.val();
+            return;
+        });
+        y.toString = function () {
+         // This function needs documentation.
+            var content = y.val().trim();
+            if (content.length > 0) {
+                return content;
+            }
+            return;
+        };
+        if (typeof obj.max === 'number') {
+            y.attr('max', obj.max);
+        }
+        if (typeof obj.min === 'number') {
+            y.attr('min', obj.min);
+        }
+        if (typeof obj.step === 'number') {
+            y.attr('step', obj.step);
+        }
+        if (typeof obj.value === 'number') {
+         // I have used "placeholder" here instead of "value" because "value"
+         // will cause the sentence to render, which is unintended behavior.
+            y.attr('placeholder', obj.value);
+        }
+        return y;
     };
 
-    off.toString = function () {
-     // This function needs documentation.
-        return '';
+    off = {
+        toString: function () {
+         // This function needs documentation.
+            return '';
+        }
     };
 
     ordinal = function (obj) {
@@ -320,13 +359,6 @@
                 return;
             }
         };
-    };
-
-    range = function (obj) {
-     // This function needs documentation.
-        var y = obj;
-        // ...
-        return y;
     };
 
     save = function () {
@@ -552,9 +584,9 @@
 
     window.binary = binary;
     window.categorical = categorical;
+    window.number = number;
     window.off = off;
     window.ordinal = ordinal;
-    window.range = range;
     window.section = section;
     window.sentence = sentence;
     window.symbol = symbol;
