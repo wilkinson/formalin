@@ -2,7 +2,7 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 22 Jul 2013
+//                                                  ~~ last updated 23 Jul 2013
 
 section('Peripheral Smear');
 
@@ -786,7 +786,7 @@ sentence({
         states:     [off, '0', '5']
     }),
     x: ordinal({
-        long_name:  ' with trilineage hematopoeisis',
+        long_name:  'with trilineage hematopoeisis',
         short_name: 'TLH',
         states:     [off, '']
     }),
@@ -999,7 +999,7 @@ sentence({
 });
 
 sentence({
-    format: 'The marrow contains {x y}',
+    format: 'The marrow contains {x y}.',
     x: ordinal({
         long_name:  'stromal damage',
         short_name: 'stromal damage',
