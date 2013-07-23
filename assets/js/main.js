@@ -1,8 +1,12 @@
 //- JavaScript source code
 
 //- main.js ~~
+//
+//  Known issues:
+//  -   https://github.com/twitter/bootstrap/pull/7692
+//
 //                                                      ~~ (c) SRW, 25 Jun 2013
-//                                                  ~~ last updated 15 Jul 2013
+//                                                  ~~ last updated 22 Jul 2013
 
 (function () {
     'use strict';
@@ -14,14 +18,15 @@
     /*jslint browser: true, indent: 4, maxlen: 80 */
 
     /*properties
-        addClass, alert, append, appendTo, apply, attr, binary, by,
-        categorical, charAt, concat, done, fail, format, getScript, hasClass,
-        hasOwnProperty, href, html, indexOf, join, jQuery, length, long_name,
-        match, off, on, ordinal, prototype, push, queue, random, range, ready,
+        addClass, alert, append, appendTo, apply, attr, binary, body, by,
+        categorical, charAt, concat, done, fail, focus, format, frames,
+        getScript, hasClass, hasOwnProperty, href, html, indexOf, join, jQuery,
+        length, long_name, match, max, min, number, off, on, ordinal, print,
+        'print-frame', prototype, push, queue, random, range, ready, remove,
         removeClass, replace, search, section, sections, sentence, sentences,
-        setTimeout, shift, short_name, slice, split, states, stringify,
-        template, test, text, textbox, title, toggleClass, toString,
-        toUpperCase, trim, url, val
+        setTimeout, shift, short_name, slice, split, states, step, stringify,
+        symbol, template, test, text, textbox, title, toggleClass, toString,
+        toUpperCase, trim, url, val, value
     */
 
  // Prerequisites
@@ -34,8 +39,8 @@
  // Declarations
 
     var $, binary, capitalize, categorical, chosen, comma, generate_report,
-        load_templates, off, ordinal, ply, range, save, section, sentence,
-        template, templates, textbox, uuid;
+        join_nonempty, load_templates, number, off, ordinal, ply, save,
+        section, sentence, symbol, template, templates, textbox, uuid;
 
  // Definitions
 
@@ -128,10 +133,32 @@
 
     generate_report = function () {
      // This function needs documentation.
-        var title = $('#case-id').val();
+        var report, title;
+        report = join_nonempty(templates, '<p></p>');
+        title = $('#case-id').val();
+        if (report.length === 0) {
+            report = 'No data have been entered.';
+        }
         $('#modal-label').text((title.length > 0) ? title : 'Report');
-        $('#report-goes-here').html(templates.join('<p></p>'));
+        $('#report-goes-here').html(report);
         return;
+    };
+
+    join_nonempty = function (x, delimiter) {
+     // This function needs documentation.
+        if ((x instanceof Array) === false) {
+            throw new TypeError('Argument must be an array.');
+        }
+        var i, n, temp, y;
+        n = x.length;
+        y = [];
+        for (i = 0; i < n; i += 1) {
+            temp = x[i].toString().trim();
+            if (temp.length > 0) {
+                y.push(temp);
+            }
+        }
+        return y.join(delimiter);
     };
 
     load_templates = function () {
@@ -153,14 +180,53 @@
         return;
     };
 
-    off = function () {
+    number = function (obj) {
      // This function needs documentation.
-        return;
+        if ((obj instanceof Object) === false) {
+            throw new TypeError('Input argument must be an object.');
+        }
+        var previous, y;
+        previous = '';
+        y = $('<input type="number" class="centered input-mini">');
+        y.on('change input', function () {
+         // This function isn't perfect yet -- it miscalculates for the edges
+         // when the `step` hits `min` or `max` before we add the `value` ...
+            if ((previous === '') && (typeof obj.value === 'number')) {
+                y.val(parseFloat(y.val()) + obj.value);
+            }
+            previous = y.val();
+            return;
+        });
+        y.toString = function () {
+         // This function needs documentation.
+            var content = y.val().trim();
+            if (content.length > 0) {
+                return content;
+            }
+            return;
+        };
+        if (typeof obj.max === 'number') {
+            y.attr('max', obj.max);
+        }
+        if (typeof obj.min === 'number') {
+            y.attr('min', obj.min);
+        }
+        if (typeof obj.step === 'number') {
+            y.attr('step', obj.step);
+        }
+        if (typeof obj.value === 'number') {
+         // I have used "placeholder" here instead of "value" because "value"
+         // will cause the sentence to render, which is unintended behavior.
+            y.attr('placeholder', obj.value);
+        }
+        return y;
     };
 
-    off.toString = function () {
-     // This function needs documentation.
-        return '';
+    off = {
+        toString: function () {
+         // This function needs documentation.
+            return '';
+        }
     };
 
     ordinal = function (obj) {
@@ -209,6 +275,70 @@
         return button;
     };
 
+ /*
+    ordinal = function (obj) {
+     // This function needs documentation.
+        //jslint unparam: true
+        var button, dropdown, group, state;
+        if ((obj instanceof Object) === false) {
+            throw new TypeError('Argument must be an object.');
+        }
+        if (obj.hasOwnProperty('long_name') === false) {
+            throw new Error('Missing `long_name` property.');
+        }
+        if (obj.hasOwnProperty('short_name') === false) {
+            throw new Error('Missing `short_name` property.');
+        }
+        if (obj.hasOwnProperty('states') === false) {
+            throw new Error('Missing `states` property.');
+        }
+        if (obj.states.length === 0) {
+            throw new Error('No `states` were specified.');
+        }
+        button = $('<button class="btn"></button>');
+        dropdown = $('<ul class="dropdown-menu"></ul>');
+        group = $('<div class="btn-group"></div>');
+        state = obj.states[0];
+        button.html(state.toString() + ' ' + obj.short_name);
+        button.on('click touch', function () {
+         // This function needs documentation.
+            button.toggleClass('btn-inverse');
+            if (button.hasClass('btn-inverse') === false) {
+                state = obj.states[0];
+            }
+            button.html(state.toString() + ' ' + obj.short_name);
+            return;
+        });
+        ply(obj.states.slice(1)).by(function (key, val) {
+         // This function needs documentation.
+            var temp = $('<li><a href="#">' + val + '</a></li>');
+            temp.on('click touch', function () {
+             // This function needs documentation.
+                state = val;
+                button.html(state.toString() + ' ' + obj.short_name)
+                    .addClass(chosen);
+                return;
+            });
+            temp.appendTo(dropdown);
+            return;
+        });
+        if (state !== off) {
+            button.addClass(chosen);
+        }
+        group.toString = function () {
+         // This function needs documentation.
+            if (button.hasClass(chosen)) {
+                return state.toString() + ' ' + obj.long_name;
+            }
+            return;
+        };
+        return group.append(button)
+            .append('<button class="btn dropdown-toggle" ' +
+                'data-toggle="dropdown"><span class="btn"></span></button>')
+            .append(dropdown);
+    };
+ */
+
     ply = function (x) {
      // This function needs documentation.
         return {
@@ -229,13 +359,6 @@
                 return;
             }
         };
-    };
-
-    range = function (obj) {
-     // This function needs documentation.
-        var y = obj;
-        // ...
-        return y;
     };
 
     save = function () {
@@ -276,12 +399,17 @@
             title: x,
             toString: function () {
              // This function needs documentation.
-                return x.toUpperCase() + '<br>' + y.sentences.join(' ');
+                var content = join_nonempty(y.sentences, ' ');
+                if (content.length > 0) {
+                    content = '<h4>' + x + '</h4><p>' + content + '</p>';
+                }
+                return content;
             }
         };
         last_template.sections.push(y);
         $('#templates-go-here').append('<hr><h2>' + x +
-            ' <a href="' + url + '"><span class="icon-file"></span></a></h2>');
+            '<a href="' + url + '" class="pull-right" target="_blank">' +
+            '<span class="icon-file-text"></span></a></h2>');
         return;
     };
 
@@ -342,8 +470,33 @@
         };
         last_section.sentences.push(obj);
         $('#templates-go-here')
-            .append('<p>').append(Array.prototype.concat.apply([], temp));
+            .append('<p></p>').append(Array.prototype.concat.apply([], temp));
         return;
+    };
+
+    symbol = function (x) {
+     // This function translates known keywords into Unicode characters. If the
+     // input string doesn't match a known keyword, it will return the input.
+     // In special cases, I may even use an icon from FontAwesome :-)
+        if ((typeof x !== 'string') && ((x instanceof String) === false)) {
+            throw new TypeError('`symbol` input must be a string.');
+        }
+        var y;
+        switch (x) {
+        case 'down arrow':
+            y = '\u2193';
+            //y = '<span class="icon-arrow-down"></span>';
+            //y = '<span class="icon-long-arrow-down"></span>';
+            break;
+        case 'up arrow':
+            y = '\u2191';
+            //y = '<span class="icon-arrow-up"></span>';
+            //y = '<span class="icon-long-arrow-up"></span>';
+            break;
+        default:
+            y = x;
+        }
+        return y;
     };
 
     template = function (x) {
@@ -368,7 +521,7 @@
                     sections: [],
                     toString: function () {
                      // This function needs documentation.
-                        return y.sections.join('<br>');
+                        return join_nonempty(y.sections, '');
                     },
                     url: url
                 };
@@ -399,17 +552,19 @@
         if ((typeof x !== 'string') && ((x instanceof String) === false)) {
             throw new TypeError('Textbox names must be strings.');
         }
-        var last_template, y;
-        last_template = templates.slice(-1)[0];
-        y = $('<textarea class="formalin-textbox"></textarea>');
+        var last_section, y;
+        last_section = templates.slice(-1)[0].sections.slice(-1)[0];
+        y = $('<textarea class="span12"></textarea>');
         y.attr('placeholder', x);
         y.toString = function () {
          // This function needs documentation.
-            var val = y.val().trim();
-            return (val.length === 0) ? val : x + ': ' + val;
+            var note, val;
+            note = x + ((x === '') ? '' : ': ');
+            val = y.val().trim();
+            return (val.length === 0) ? val : '<p>' + note + val + '</p>';
         };
-        last_template.sections.push(y);
-        $('#templates-go-here').append('<p>').append(y);
+        last_section.sentences.push(y);
+        $('#templates-go-here').append('<p></p>').append(y);
         return;
     };
 
@@ -429,17 +584,40 @@
 
     window.binary = binary;
     window.categorical = categorical;
+    window.number = number;
     window.off = off;
     window.ordinal = ordinal;
-    window.range = range;
     window.section = section;
     window.sentence = sentence;
+    window.symbol = symbol;
     window.template = template;
     window.textbox = textbox;
 
  // Invocations
 
     $('#the-modal').on('show', generate_report);
+
+    $('#print-button').on('click touch', function () {
+     // This function needs documentation.
+        var content, iframe, title;
+        content = $('#report-goes-here').html();
+            //.attr('srcdoc', content)
+        iframe = $('<iframe></iframe>')
+            .attr('name', 'print-frame')
+            .attr('srcdoc', content)
+            .on('load', function () {
+             // This function needs documentation.
+                window.frames['print-frame'].focus();
+                window.frames['print-frame'].print();
+                iframe.remove();
+                document.title = title;
+                return;
+            });
+        title = document.title;
+        document.title = $('#modal-label').html();
+        $(document.body).append(iframe);
+        return;
+    });
 
     $('#save-button').on('click touch', save);
 

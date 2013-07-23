@@ -2,20 +2,21 @@
 <!--
     index.html ~~
                                                         ~~ (c) SRW, 25 Jun 2013
-                                                    ~~ last updated 15 Jul 2013
+                                                    ~~ last updated 22 Jul 2013
 -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Formalin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
     <meta name="author" content="Sean Wilkinson">
+    <meta name="description" content="A browser-based, user-extensible report generator for clinical environments">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Stylesheets -->
+  <!-- Stylesheets -->
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim for IE6-8 support of HTML5 elements -->
@@ -23,7 +24,7 @@
       <script src="assets/js/html5shiv.js"></script>
     <![endif]-->
 
-    <!-- Icons -->
+  <!-- Icons -->
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
         href="assets/ico/apple-touch-icon-144-precomposed.png">
@@ -44,7 +45,7 @@
       <noscript>This page requires JavaScript.</noscript>
     </div>
 
-    <!-- Navbar -->
+  <!-- Navbar -->
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -91,42 +92,42 @@
       </div>
     </div>
 
-    <!-- Basic input elements -->
+  <!-- Basic input elements -->
 
     <div class="container">
       <div class="centered form-inline">
-        <label for="case-id">Case Identifier:</label>
         <input class="span3" id="case-id" type="text"
-            pattern="[\S\s]+" placeholder="John Doe" required>
+            pattern="[\S\s]+" placeholder="Case Identifier" required>
         <a href="#the-modal" role="button" class="btn btn-primary"
             data-toggle="modal">Generate Report</a>
       </div>
     </div>
 
-    <!-- Modal -->
+  <!-- Modal -->
 
     <div id="the-modal" class="modal hide fade" tabindex="-1"
         role="dialog" aria-labelledby="modal-label" aria-hidden="true">
       <div class="modal-header">
-        <button type="button" class="close"
-            data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal"
+            aria-hidden="true"><span class="icon-remove-sign"></span></button>
         <h3 id="modal-label">Report</h3>
       </div>
       <div class="modal-body" id="report-goes-here"></div>
       <div class="modal-footer">
-        <button class="btn"
-            data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary" id="save-button" disabled>Save</button>
+        <button class="btn" id="print-button" aria-hidden="true"><span
+            class="icon-print"></span> Print</button>
+        <button class="btn" id="save-button" aria-hidden="true" disabled><span
+            class="icon-save"></span> Save</button>
       </div>
     </div>
 
-    <!-- Content -->
+  <!-- Content -->
 
     <div class="container" id="templates-go-here"></div>
 
     <hr>
 
-    <!-- Footer -->
+  <!-- Footer -->
 
     <footer class="footer">
       <div class="centered container">
@@ -141,7 +142,7 @@
       </div>
     </footer>
 
-    <!-- JavaScript -->
+  <!-- JavaScript -->
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
