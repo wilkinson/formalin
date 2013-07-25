@@ -2,7 +2,7 @@
 
 //- default.js ~~
 //                                              ~~ (c) SRW and BCH, 09 Aug 2012
-//                                                  ~~ last updated 23 Jul 2013
+//                                                  ~~ last updated 24 Jul 2013
 
 section('Peripheral Smear');
 
@@ -942,10 +942,9 @@ sentence({
             short_name: 'left shift'
         }
     ]),
-    a: ordinal({
+    a: binary({
         long_name:  'unremarkable morphology',
-        short_name: 'unremarkable',
-        states:     [off, '']
+        short_name: 'unremarkable'
     }),
     b: ordinal({
         long_name:  'hypolobated forms',
