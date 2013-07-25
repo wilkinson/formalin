@@ -503,11 +503,11 @@ sentence({
     }),
     z: categorical([
         {
-            long_name:  'normal maturation',
+            long_name:  'with normal maturation',
             short_name: 'normal maturation'
         },
         {
-            long_name:  'a left shift',
+            long_name:  'with a left shift',
             short_name: 'left shift'
         }
     ]),
@@ -542,11 +542,11 @@ sentence({
     }),
     z: categorical([
         {
-            long_name:  'normal maturation',
+            long_name:  'with normal maturation',
             short_name: 'normal maturation'
         },
         {
-            long_name:  'a left shift',
+            long_name:  'with a left shift',
             short_name: 'left shift'
         }
     ])
