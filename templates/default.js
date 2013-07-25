@@ -7,6 +7,25 @@
 section('Peripheral Smear');
 
 sentence({
+    format: 'Red blood cells show {x y z}.',
+    x: ordinal({
+        long_name:  'anisopoikilocytosis',
+        short_name: 'APK',
+        states:     [off, 'mild', 'moderate', 'severe']
+    }),
+    y: ordinal({
+        long_name:  'anisocytosis',
+        short_name: 'aniso',
+        states:     [off, 'mild', 'moderate', 'severe']
+    }),
+    z: ordinal({
+        long_name:  'poikilocytosis',
+        short_name: 'poikilo',
+        states:     [off, 'mild', 'moderate', 'severe']
+    })
+});
+
+sentence({
     format: 'Red blood cells are {x y}.',
     x: categorical([
         {
@@ -36,25 +55,6 @@ sentence({
             short_name: 'hyperchromic'
         }
     ])
-});
-
-sentence({
-    format: 'Red blood cells show {x y z}.',
-    x: ordinal({
-        long_name:  'anisopoikilocytosis',
-        short_name: 'APK',
-        states:     [off, 'mild', 'moderate', 'severe']
-    }),
-    y: ordinal({
-        long_name:  'anisocytosis',
-        short_name: 'aniso',
-        states:     [off, 'mild', 'moderate', 'severe']
-    }),
-    z: ordinal({
-        long_name:  'poikilocytosis',
-        short_name: 'poikilo',
-        states:     [off, 'mild', 'moderate', 'severe']
-    })
 });
 
 sentence({
